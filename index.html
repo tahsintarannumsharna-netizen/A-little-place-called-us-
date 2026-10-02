@@ -580,7 +580,7 @@ Also known as Khamba, Tap Recorder,
 Artist, Pig, and occasionally just Ehsan.
 </p>
 
-<button class="btn" onclick="enterChaos()">
+<button class="btn" onclick="scrollToId('intro'); enterChaos();">
 ENTER THE CHAOS →
 </button>
 
@@ -2008,129 +2008,350 @@ function memory(index){
 </script>
 
 <!-- ==================== SARCASTIC OPEN WHEN & BACK TO TOP END ==================== -->
-<!-- ==================== EMERGENCY TOOLKIT START ==================== -->
+  <!-- ==================== EMERGENCY TOOLKIT START ==================== -->
 
-<div class="fun-box">
-  <h2 class="fun-title">Emergency Toolkit 🚨</h2>
-  <p class="fun-sub">(For Ehsan only. Use responsibly.)</p>
+<div class="tk">
 
-  <div class="fun-card">
-    <h3>🔮 Should I take the first step?</h3>
-    <button class="fun-btn" onclick="askOracle()">Ask the Oracle</button>
-    <div class="fun-out" id="oracleOut"></div>
+  <div class="tk-head">
+    <span class="tk-eyebrow">Emergency toolkit</span>
+    <h2>For Ehsan only.</h2>
+    <p>Use responsibly.</p>
   </div>
 
-  <div class="fun-card">
-    <h3>🥺 Sorry Generator</h3>
-    <button class="fun-btn" onclick="makeSorry()">Generate Sorry</button>
-    <div class="fun-out" id="sorryOut"></div>
+  <!-- 1. ORACLE -->
+  <div class="tk-card">
+    <div class="tk-title"><span class="tk-ico">🔮</span><h3>Should I take the first step?</h3></div>
+    <button class="tk-btn" onclick="askOracle()">Ask the Oracle</button>
+    <div class="tk-out" id="oracleOut"></div>
   </div>
 
-  <div class="fun-card">
-    <h3>⏱️ Time spent here</h3>
-    <div class="fun-time" id="timeOut">0s</div>
-    <div class="fun-out" id="timeMsg">Just warming up...</div>
+  <!-- 2. SORRY -->
+  <div class="tk-card">
+    <div class="tk-title"><span class="tk-ico">💌</span><h3>Say sorry to Toto Tara</h3></div>
+
+    <div class="tk-label">1. What happened?</div>
+    <div class="tk-chips" id="reasonChips">
+      <button class="tk-chip active" data-key="water" onclick="pickReason(this)">Forgot water</button>
+      <button class="tk-chip" data-key="talk" onclick="pickReason(this)">Talked too much</button>
+      <button class="tk-chip" data-key="initiative" onclick="pickReason(this)">No initiative</button>
+      <button class="tk-chip" data-key="overthink" onclick="pickReason(this)">Overthought</button>
+      <button class="tk-chip" data-key="angry" onclick="pickReason(this)">Made you angry</button>
+      <button class="tk-chip" data-key="other" onclick="pickReason(this)">Just my fault</button>
+    </div>
+
+    <div class="tk-label">2. How sorry are you?</div>
+    <div class="tk-chips" id="levelChips">
+      <button class="tk-chip active" data-key="small" onclick="pickLevel(this)">A little</button>
+      <button class="tk-chip" data-key="medium" onclick="pickLevel(this)">Quite a lot</button>
+      <button class="tk-chip" data-key="serious" onclick="pickLevel(this)">Very serious</button>
+    </div>
+
+    <div class="tk-label">3. Your message (you can edit it)</div>
+    <textarea class="tk-text" id="sorryText" rows="4"></textarea>
+
+    <div class="tk-actions">
+      <button class="tk-btn" onclick="sendSorry()">Send on WhatsApp</button>
+      <button class="tk-btn ghost" onclick="copySorry()">Copy</button>
+    </div>
+    <div class="tk-out" id="sorryStatus"></div>
+  </div>
+
+  <!-- 3. REASONS -->
+  <div class="tk-card">
+    <div class="tk-title"><span class="tk-ico">💖</span><h3>Reasons I like you</h3></div>
+    <button class="tk-btn" onclick="giveReason()">Tell me one</button>
+    <div class="tk-out" id="reasonOut"></div>
+  </div>
+
+  <!-- 4. BEDTIME -->
+  <div class="tk-card">
+    <div class="tk-title"><span class="tk-ico">🌙</span><h3>Bedtime</h3></div>
+    <button class="tk-btn" onclick="goodnight()">Ghumaite jai</button>
+  </div>
+
+  <!-- 5. TIME -->
+  <div class="tk-card">
+    <div class="tk-title"><span class="tk-ico">⏱️</span><h3>Time spent here</h3></div>
+    <div class="tk-time" id="timeOut">0s</div>
+    <div class="tk-out" id="timeMsg">Just warming up...</div>
+  </div>
+
+</div>
+
+<!-- GOODNIGHT SCREEN -->
+<div class="goodnight" id="goodnight" onclick="closeGoodnight()">
+  <div>
+    <h2>Ghumao, Ehsan.</h2>
+    <p>Pani kheyecho? Tahole ekhon ghumao. Kal abar yap korba.</p>
+    <small>Tap anywhere to wake up</small>
   </div>
 </div>
 
 <style>
-  .fun-box{
+  .tk{
     align-self:center;
     width:100%;
-    max-width:600px;
-    margin:40px auto 20px;
+    max-width:640px;
+    margin:60px auto 30px;
     padding:0 15px;
+  }
+  .tk-head{
     text-align:center;
+    margin-bottom:28px;
   }
-  .fun-title{
-    color:#ff758f;
-    font-size:22px;
-    margin-bottom:4px;
+  .tk-eyebrow{
+    text-transform:uppercase;
+    letter-spacing:.25em;
+    font-size:.68rem;
+    color:var(--pink2);
   }
-  .fun-sub{
-    color:rgba(255,255,255,.6);
-    font-size:12px;
-    margin-bottom:20px;
+  .tk-head h2{
+    font-size:clamp(2rem,6vw,3rem);
+    margin:10px 0 6px;
   }
-  .fun-card{
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.12);
-    border-radius:12px;
-    padding:18px;
-    margin-bottom:15px;
+  .tk-head p{
+    color:var(--muted);
+    font-size:.9rem;
   }
-  .fun-card h3{
-    font-size:16px;
-    color:#fff;
-    margin-bottom:12px;
+
+  .tk-card{
+    background:linear-gradient(145deg,var(--card),#111011);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:14px;
   }
-  .fun-btn{
-    background:transparent;
-    border:2px solid #ff4d6d;
-    color:#ff4d6d;
-    padding:9px 20px;
-    border-radius:30px;
-    font-weight:bold;
+  .tk-title{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding-bottom:14px;
+    margin-bottom:16px;
+    border-bottom:1px solid var(--line);
+  }
+  .tk-ico{
+    width:36px;
+    height:36px;
+    border-radius:10px;
+    background:rgba(214,154,162,.12);
+    border:1px solid rgba(214,154,162,.25);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1rem;
+    flex-shrink:0;
+  }
+  .tk-title h3{
+    font-size:1.15rem;
+  }
+
+  .tk-label{
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    color:var(--muted);
+    margin:16px 0 8px;
+  }
+  .tk-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .tk-chip{
+    background:#141214;
+    color:var(--text);
+    border:1px solid var(--line);
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.85rem;
     cursor:pointer;
-    transition:.3s;
+    transition:.2s;
   }
-  .fun-btn:hover{
-    background:#ff4d6d;
-    color:#fff;
+  .tk-chip:hover{
+    border-color:var(--pink);
   }
-  .fun-out{
+  .tk-chip.active{
+    background:var(--pink);
+    color:#180f11;
+    border-color:var(--pink);
+  }
+
+  .tk-text{
+    width:100%;
+    background:#0e0d0e;
+    border:1px solid var(--line);
+    border-radius:12px;
+    color:var(--text);
+    font:inherit;
+    font-size:.92rem;
+    padding:12px 14px;
+    resize:vertical;
+    outline:none;
+  }
+  .tk-text:focus{
+    border-color:var(--pink);
+  }
+
+  .tk-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
     margin-top:14px;
-    color:#ffb3c1;
-    font-size:14px;
+  }
+  .tk-btn{
+    background:transparent;
+    border:1px solid var(--pink);
+    color:var(--text);
+    padding:10px 20px;
+    border-radius:999px;
+    cursor:pointer;
+    transition:.25s;
+  }
+  .tk-btn:hover{
+    background:var(--pink);
+    color:#180f11;
+  }
+  .tk-btn.ghost{
+    border-color:var(--line);
+    color:var(--muted);
+  }
+  .tk-btn.ghost:hover{
+    border-color:var(--pink);
+    background:transparent;
+    color:var(--text);
+  }
+
+  .tk-out{
+    margin-top:14px;
+    color:var(--pink2);
+    font-size:.92rem;
     min-height:20px;
   }
-  .fun-time{
-    font-size:28px;
-    font-weight:bold;
-    color:#fff;
+  .tk-time{
+    font-family:"Playfair Display",serif;
+    font-size:2rem;
+    color:var(--text);
   }
-  .pop-emoji{
+
+  .goodnight{
     position:fixed;
-    pointer-events:none;
-    font-size:22px;
-    z-index:9999;
-    animation:popUp 1s ease-out forwards;
+    inset:0;
+    background:rgba(5,4,8,.97);
+    z-index:10000;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:30px;
+    cursor:pointer;
+    color:var(--text);
   }
-  @keyframes popUp{
-    from{ opacity:1; transform:translateY(0) scale(1); }
-    to{ opacity:0; transform:translateY(-70px) scale(1.5); }
-  }
+  .goodnight.show{ display:flex; }
+  .goodnight p{ color:var(--muted); max-width:420px; margin:10px auto 0; }
+  .goodnight small{ display:block; margin-top:25px; color:#6f6670; }
 </style>
 
 <script>
+  /* ====== SETTINGS ====== */
+  // Tomar WhatsApp number ekhane dao (country code shoho, + ba space chara)
+  // Example: 8801XXXXXXXXX
+  const MY_WHATSAPP = "+8801712504891";
+
+  /* ====== 1. ORACLE ====== */
   const oracleAnswers = [
     "Yes. Right now. Not after 3 hours of thinking.",
     "Signs point to: stop asking, start doing.",
     "Outlook good. But plan it yourself this time.",
-    "Ask again after drinking water. 💧",
+    "Ask again after drinking water.",
     "The Oracle says: she already knows what you should do. Think harder.",
-    "Yes. And bring flowers. 🌷"
+    "Yes. And bring flowers."
   ];
-
-  const sorryLines = [
-    "Sorry. I will drink water immediately. 💧",
-    "Sorry. I talked too much. Again. 🎙️",
-    "Sorry. I should have taken the first step. I will try. Probably.",
-    "Sorry, Toto Tara. You were right. As always. 👑",
-    "Sorry. Here, have a flower. 🌷",
-    "Sorry. I overthought it. 46 scenarios, all wrong."
-  ];
-
   function askOracle(){
     const i = Math.floor(Math.random() * oracleAnswers.length);
     document.getElementById("oracleOut").textContent = oracleAnswers[i];
   }
 
-  function makeSorry(){
-    const i = Math.floor(Math.random() * sorryLines.length);
-    document.getElementById("sorryOut").textContent = sorryLines[i];
+  /* ====== 2. SORRY ====== */
+  const reasonTexts = {
+    water:      "I forgot to drink water again",
+    talk:       "I talked too much again",
+    initiative: "I waited for you to guide every step instead of taking the first one",
+    overthink:  "I overthought a tiny thing and made it big",
+    angry:      "I made you angry",
+    other:      "I was wrong"
+  };
+  const levelTails = {
+    small:   "I will do better. Promise.",
+    medium:  "I know it bothered you, and I really do care about fixing it. I will try harder.",
+    serious: "I never want you to feel unheard or tired of guiding me. Tell me how I can make it right, and I will listen properly this time."
+  };
+
+  let currentReason = "water";
+  let currentLevel  = "small";
+
+  function pickReason(btn){
+    document.querySelectorAll("#reasonChips .tk-chip").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    currentReason = btn.dataset.key;
+    buildSorry();
+  }
+  function pickLevel(btn){
+    document.querySelectorAll("#levelChips .tk-chip").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    currentLevel = btn.dataset.key;
+    buildSorry();
+  }
+  function buildSorry(){
+    const msg = "Sorry, Toto Tara. " + reasonTexts[currentReason] + ". " + levelTails[currentLevel];
+    document.getElementById("sorryText").value = msg;
+    document.getElementById("sorryStatus").textContent = "";
+  }
+  function sendSorry(){
+    const text = document.getElementById("sorryText").value.trim();
+    if(!text){ return; }
+    const url = "https://wa.me/" + MY_WHATSAPP + "?text=" + encodeURIComponent(text);
+    window.open(url, "_blank");
+    document.getElementById("sorryStatus").textContent = "WhatsApp opening...";
+  }
+  function copySorry(){
+    const box = document.getElementById("sorryText");
+    box.select();
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(box.value);
+    }else{
+      document.execCommand("copy");
+    }
+    document.getElementById("sorryStatus").textContent = "Copied. Now go send it.";
+  }
+  buildSorry();
+
+  /* ====== 3. REASONS ====== */
+  const reasons = [
+    "Because you notice the tiny things.",
+    "Because you try, even when you overthink.",
+    "Because you make boring days feel fun.",
+    "Because your yapping is weirdly comforting.",
+    "Because you remember things I forgot I said.",
+    "Because you are 6'2\" and still so soft."
+  ];
+  let lastReason = -1;
+  function giveReason(){
+    let i;
+    do { i = Math.floor(Math.random() * reasons.length); }
+    while (i === lastReason);
+    lastReason = i;
+    document.getElementById("reasonOut").textContent = reasons[i];
   }
 
+  /* ====== 4. BEDTIME ====== */
+  function goodnight(){
+    document.getElementById("goodnight").classList.add("show");
+  }
+  function closeGoodnight(){
+    document.getElementById("goodnight").classList.remove("show");
+  }
+
+  /* ====== 5. TIMER ====== */
   let funSeconds = 0;
   setInterval(function(){
     funSeconds++;
@@ -2141,23 +2362,12 @@ function memory(index){
 
     let msg = "Just warming up...";
     if(funSeconds >= 30)  msg = "Still here? Respect.";
-    if(funSeconds >= 120) msg = "You are reading everything. Suspicious. 🤨";
+    if(funSeconds >= 120) msg = "You are reading everything. Suspicious.";
     if(funSeconds >= 300) msg = "5 minutes. Okay, you officially like this website.";
     document.getElementById("timeMsg").textContent = msg;
   }, 1000);
-
-  const popEmojis = ["💖", "🌷", "💧", "🎙️", "✨"];
-  document.addEventListener("click", function(e){
-    const el = document.createElement("span");
-    el.className = "pop-emoji";
-    el.textContent = popEmojis[Math.floor(Math.random() * popEmojis.length)];
-    el.style.left = e.clientX + "px";
-    el.style.top = e.clientY + "px";
-    document.body.appendChild(el);
-    setTimeout(function(){ el.remove(); }, 1000);
-  });
 </script>
 
-<!-- ==================== EMERGENCY TOOLKIT END ==================== -->  
+<!-- ==================== EMERGENCY TOOLKIT END ==================== -->
 </body>
 </html>
