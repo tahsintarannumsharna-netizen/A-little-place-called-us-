@@ -1334,7 +1334,7 @@ You overthink.
 You yap.
 You make me angry.
 You are ridiculously tall.
-You occasionally need very obvious instructions.
+You need very obvious instructions.
 </p>
 
 <p>
@@ -1349,4 +1349,305 @@ You make ordinary days fun.
 
 <p>
 And somewhere along the way,
-you became som
+you became somsomeone I really, really care about.
+</p>
+
+<p>
+So yes.
+I made you a whole website.
+Unfortunately, you are worth the effort.
+</p>
+
+<p>
+Happy Boyfriend Day, Ehsan.
+</p>
+
+<p style="font-family:'Playfair Display';font-size:1.4rem;">
+— Your Toto Tara
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<section class="final">
+
+<div class="wrap reveal">
+
+<span class="eyebrow">End of investigation</span>
+
+<h2>
+Happy Boyfriend Day,<br>
+<span style="color:var(--pink2);font-style:italic;">
+Ehsan.
+</span>
+</h2>
+
+<p class="lead" style="margin:auto;">
+Now drink some water.
+And maybe take the first step sometimes.
+  rn Ghumao
+</p>
+
+<button class="btn" onclick="location.reload()">
+START THE CHAOS AGAIN ↻
+</button>
+
+</div>
+
+</section>
+
+
+<script>
+
+/* SCROLL */
+
+function scrollToId(id){
+  document.getElementById(id).scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+
+/* REVEAL */
+
+const observer = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting){
+        entry.target.classList.add("show");
+      }
+    });
+  },
+  {threshold:.12}
+);
+
+document.querySelectorAll(".reveal").forEach(el=>{
+  observer.observe(el);
+});
+
+
+/* TOAST */
+
+function toast(message){
+
+  const box=document.getElementById("toast");
+
+  box.textContent=message;
+
+  box.classList.add("show");
+
+  setTimeout(()=>{
+    box.classList.remove("show");
+  },1800);
+
+}
+
+
+/* TAP RECORDER */
+
+let tapCount=0;
+
+const tapLines=[
+  "Okay, listen—",
+  "Actually—",
+  "Wait, wait—",
+  "You know what happened?",
+  "One more thing—",
+  "Basically—",
+  "Okay but listen—",
+  "No, last thing—"
+];
+
+function tapRecorder(){
+
+  tapCount++;
+
+  document.getElementById("tapStart").style.display="none";
+
+  document.getElementById("tapResult").style.display="block";
+
+  document.getElementById("tapLine").textContent=
+    tapLines[(tapCount-1)%tapLines.length];
+
+  if(tapCount>=7){
+
+    document.getElementById("tapSub").textContent=
+      "TAP RECORDER OVERHEATED.";
+
+    toast("TAP RECORDER OVERHEATED 🎙️");
+
+  }else{
+
+    document.getElementById("tapSub").textContent=
+      "This is exactly how it starts.";
+
+  }
+
+}
+
+
+/* FLOWERS */
+
+let flowers=0;
+
+function addFlower(){
+
+  flowers++;
+
+  document.getElementById("flowerCount").textContent=flowers;
+
+  if(flowers===1){
+    toast("Flower received 🌷");
+  }else{
+    toast("Another one. Of course. 🌷");
+  }
+
+}
+
+
+/* WATER */
+
+function drinkWater(){
+
+  document.getElementById("waterText").textContent=
+    "GOOD. BOYFRIEND HYDRATION SUCCESSFULLY DETECTED. 💧";
+
+  toast("Hydration achieved.");
+
+}
+
+
+/* INITIATIVE */
+
+let initiativeLevel=15;
+
+function initiative(){
+
+  initiativeLevel+=17;
+
+  if(initiativeLevel>100){
+    initiativeLevel=100;
+  }
+
+  document.getElementById("initiativeMeter").style.width=
+    initiativeLevel+"%";
+
+  const messages=[
+    "SYSTEM: First step detected.",
+    "UPDATE: Independent thinking detected.",
+    "GIRLFRIEND STATUS: Mildly impressed.",
+    "WARNING: Do not wait for instructions next time.",
+    "MISSION: Plan something yourself."
+  ];
+
+  const index=Math.min(
+    Math.floor(initiativeLevel/20),
+    messages.length-1
+  );
+
+  document.getElementById("initiativeText").textContent=
+    messages[index];
+
+}
+
+
+/* QUIZ */
+
+const questions=[
+  ...document.querySelectorAll(".question")
+];
+
+let currentQuestion=0;
+let score=0;
+
+questions.forEach((question,index)=>{
+
+  const answers=question.querySelectorAll(".answer");
+
+  answers.forEach((answer,answerIndex)=>{
+
+    answer.addEventListener("click",()=>{
+
+      if(index!==currentQuestion){
+        return;
+      }
+
+      const correct=
+        answerIndex===Number(question.dataset.answer);
+
+      if(correct){
+
+        answer.classList.add("correct");
+        score++;
+
+        document.getElementById("quizResult").textContent=
+          "Correct. You actually know me.";
+
+      }else{
+
+        answer.classList.add("wrong");
+
+        document.getElementById("quizResult").textContent=
+          "Wrong. Interesting. We need to talk.";
+
+      }
+
+      setTimeout(()=>{
+
+        question.classList.remove("active");
+
+        currentQuestion++;
+
+        if(currentQuestion<questions.length){
+
+          questions[currentQuestion].classList.add("active");
+
+        }else{
+
+          document.getElementById("quizResult").textContent=
+            "Final score: "+score+"/4. Relationship still operational.";
+
+        }
+
+      },700);
+
+    });
+
+  });
+
+});
+
+
+/* MEMORY */
+
+const memories=[
+
+"24 April 2020 — the first conversation. Very innocent beginning. Look where that went.",
+
+"3 April 2021 — first meeting at varsity. Senior–junior era unlocked.",
+
+"Random walks, random roads, random food. Somehow these are still some of my favourite plans.",
+
+"Dhanmondi Lake — one evening that became a turning point in our story.",
+
+"You give me flowers. A lot. I notice every single one."
+
+];
+
+function memory(index){
+
+  document.getElementById("memoryText").textContent=
+    memories[index];
+
+}
+
+</script>
+
+</body>
+</html>
