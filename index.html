@@ -7,19 +7,20 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
 
 <style>
+
 :root{
-  --bg:#0c0b0c;
-  --bg2:#121012;
-  --card:#171417;
-  --ivory:#f3eadc;
-  --muted:#aaa09a;
-  --rose:#c88f96;
-  --rose2:#e3b5b8;
-  --burgundy:#4a252d;
-  --line:rgba(243,234,220,.12);
+  --bg:#0b0a0b;
+  --card:#151315;
+  --card2:#1d191c;
+  --text:#f3eadf;
+  --muted:#a69d98;
+  --pink:#d69aa2;
+  --pink2:#edc1c4;
+  --line:rgba(243,234,223,.12);
+  --green:#a7c4a4;
 }
 
 *{
@@ -34,2248 +35,1318 @@ html{
 
 body{
   background:var(--bg);
-  color:var(--ivory);
+  color:var(--text);
   font-family:"DM Sans",sans-serif;
+  line-height:1.6;
   overflow-x:hidden;
 }
 
-body:before{
-  content:"";
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  background:
-    radial-gradient(circle at 15% 15%,rgba(200,143,150,.09),transparent 28%),
-    radial-gradient(circle at 85% 70%,rgba(74,37,45,.16),transparent 32%);
-  z-index:-1;
+button{
+  font:inherit;
 }
 
 section{
-  padding:110px 7%;
-  position:relative;
+  padding:100px 7vw;
 }
 
-.container{
-  max-width:1100px;
+.wrap{
+  max-width:1050px;
   margin:auto;
-}
-
-.eyebrow{
-  color:var(--rose2);
-  text-transform:uppercase;
-  letter-spacing:4px;
-  font-size:11px;
-  margin-bottom:18px;
-}
-
-h1,h2,h3{
-  font-family:"Playfair Display",serif;
-  font-weight:500;
-}
-
-h2{
-  font-size:clamp(42px,7vw,82px);
-  line-height:.98;
-  margin-bottom:28px;
-}
-
-h3{
-  font-size:30px;
-}
-
-p{
-  color:var(--muted);
-  line-height:1.9;
-  font-size:16px;
-}
-
-button{
-  font-family:inherit;
-  cursor:pointer;
-}
-
-#loader{
-  position:fixed;
-  inset:0;
-  background:#080708;
-  z-index:9999;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  transition:opacity 1s,visibility 1s;
-}
-
-#loader.hide{
-  opacity:0;
-  visibility:hidden;
-}
-
-.loader-text{
-  text-align:center;
-}
-
-.loader-text span{
-  display:block;
-  color:var(--rose2);
-  font-size:11px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-  margin-bottom:15px;
-}
-
-.loader-text h1{
-  font-size:42px;
 }
 
 .hero{
   min-height:100vh;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:40px 7%;
+  padding:30px;
+  position:relative;
 }
 
-.hero-inner{
-  max-width:850px;
+.hero small,
+.eyebrow{
+  text-transform:uppercase;
+  letter-spacing:.25em;
+  font-size:.68rem;
+  color:var(--pink2);
 }
 
 .hero h1{
-  font-size:clamp(60px,11vw,145px);
-  line-height:.82;
-  letter-spacing:-5px;
-}
-
-.hero h1 em{
-  color:var(--rose2);
-}
-
-.hero-sub{
-  margin:38px auto;
-  max-width:550px;
-  font-size:17px;
-}
-
-.enter-btn{
-  border:1px solid rgba(227,181,184,.5);
-  background:transparent;
-  color:var(--ivory);
-  padding:16px 34px;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  font-size:11px;
-  transition:.3s;
-}
-
-.enter-btn:hover{
-  background:var(--rose);
-  border-color:var(--rose);
-  color:#171012;
-}
-
-.scroll-note{
-  position:absolute;
-  bottom:30px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:10px;
-  letter-spacing:3px;
-  color:#777;
-  text-transform:uppercase;
-}
-
-.intro{
-  background:linear-gradient(180deg,var(--bg),var(--bg2));
-}
-
-.intro-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:70px;
-  align-items:center;
-}
-
-.big-quote{
   font-family:"Playfair Display",serif;
-  font-size:clamp(35px,5vw,65px);
-  line-height:1.08;
+  font-size:clamp(4rem,10vw,8rem);
+  line-height:.88;
+  font-weight:500;
+  margin:25px 0;
 }
 
-.big-quote em{
-  color:var(--rose2);
+.hero h1 span{
+  color:var(--pink2);
+  font-style:italic;
 }
 
-.card-grid{
+.hero p{
+  max-width:620px;
+  margin:auto;
+  color:var(--muted);
+}
+
+.btn{
+  border:1px solid var(--pink);
+  background:transparent;
+  color:var(--text);
+  padding:12px 20px;
+  border-radius:999px;
+  cursor:pointer;
+  margin-top:25px;
+  transition:.25s;
+}
+
+.btn:hover{
+  background:var(--pink);
+  color:#180f11;
+  transform:translateY(-2px);
+}
+
+h2{
+  font-family:"Playfair Display",serif;
+  font-weight:500;
+  font-size:clamp(2.5rem,6vw,5rem);
+  line-height:1;
+  margin:12px 0 20px;
+}
+
+h3{
+  font-family:"Playfair Display",serif;
+  font-size:1.5rem;
+  font-weight:500;
+}
+
+.lead{
+  color:var(--muted);
+  max-width:700px;
+}
+
+.grid{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:18px;
+  gap:14px;
+  margin-top:35px;
+}
+
+.two{
+  grid-template-columns:repeat(2,1fr);
 }
 
 .card{
-  background:var(--card);
+  background:linear-gradient(145deg,var(--card),#111011);
   border:1px solid var(--line);
-  padding:30px;
-  min-height:190px;
-  transition:.3s;
+  border-radius:20px;
+  padding:25px;
+  transition:.25s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
-  border-color:rgba(227,181,184,.3);
-}
-
-.card-number{
-  color:var(--rose);
-  font-size:11px;
-  letter-spacing:2px;
-  margin-bottom:25px;
+  transform:translateY(-4px);
+  border-color:rgba(214,154,162,.3);
 }
 
 .card p{
-  font-size:14px;
+  color:var(--muted);
+  margin-top:8px;
+  font-size:.92rem;
 }
 
-.love-list{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:1px;
-  background:var(--line);
+.tag{
+  display:inline-block;
   border:1px solid var(--line);
-}
-
-.love-item{
-  padding:25px;
-  background:var(--bg);
-  transition:.3s;
-}
-
-.love-item:hover{
-  background:var(--card);
-}
-
-.love-item span{
-  color:var(--rose2);
-  margin-right:10px;
-}
-
-.timeline{
-  position:relative;
-  max-width:850px;
-  margin:60px auto 0;
-}
-
-.timeline:before{
-  content:"";
-  position:absolute;
-  left:20px;
-  top:0;
-  bottom:0;
-  width:1px;
-  background:var(--line);
-}
-
-.timeline-item{
-  position:relative;
-  padding:0 0 65px 70px;
-}
-
-.timeline-dot{
-  position:absolute;
-  left:14px;
-  top:5px;
-  width:13px;
-  height:13px;
-  border:2px solid var(--rose);
-  border-radius:50%;
-  background:var(--bg);
-}
-
-.timeline-date{
-  color:var(--rose2);
-  font-size:11px;
-  letter-spacing:3px;
+  border-radius:20px;
+  padding:4px 9px;
+  font-size:.65rem;
+  color:var(--muted);
   margin-bottom:12px;
 }
 
-.timeline-item h3{
-  margin-bottom:10px;
-}
-
-.center-text{
+.center{
   text-align:center;
-  max-width:800px;
-  margin:auto;
 }
 
-.plot-twist{
-  min-height:70vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  background:
-    radial-gradient(circle,rgba(74,37,45,.4),transparent 60%);
+.reveal{
+  opacity:0;
+  transform:translateY(25px);
+  transition:.7s;
 }
 
-.plot-twist h2{
-  font-size:clamp(55px,9vw,115px);
+.reveal.show{
+  opacity:1;
+  transform:none;
 }
 
-.plot-twist h2 em{
-  display:block;
-  color:var(--rose2);
-}
+/* FUN STATS */
 
-.plot-twist p{
+.stats{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
   margin-top:30px;
 }
 
-.duo{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:2px;
-}
-
-.duo-box{
-  min-height:330px;
-  padding:55px;
-  background:var(--card);
+.stat{
+  background:#111011;
   border:1px solid var(--line);
+  border-radius:16px;
+  padding:20px 10px;
 }
 
-.duo-box:first-child{
-  background:#151216;
+.stat b{
+  display:block;
+  font-family:"Playfair Display";
+  font-size:2rem;
+  color:var(--pink2);
 }
 
-.duo-box h3{
-  font-size:50px;
-  margin-bottom:15px;
+.stat span{
+  color:var(--muted);
+  font-size:.68rem;
+  text-transform:uppercase;
 }
 
-.nicknames{
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:35px;
-}
+/* NICKNAMES */
 
 .nickname{
-  border:1px solid var(--line);
-  padding:14px 19px;
-  background:var(--card);
-  font-size:13px;
+  cursor:pointer;
+  min-height:150px;
 }
 
-.nickname strong{
-  color:var(--rose2);
-}
-
-.name-section{
-  text-align:center;
-  background:var(--bg2);
-}
-
-.name-reveal{
-  margin:45px auto 0;
-  max-width:650px;
-  padding:45px;
-  border:1px solid var(--line);
-  background:#100e10;
-}
-
-.name-reveal .name{
-  font-family:"Playfair Display",serif;
-  font-size:75px;
-  color:var(--rose2);
-  font-style:italic;
-  margin:20px 0;
-}
-
-.intimate{
-  background:
-    linear-gradient(120deg,rgba(74,37,45,.25),transparent 55%);
-}
-
-.intimate-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:15px;
-  margin-top:50px;
-}
-
-.intimate-card{
-  padding:35px;
-  background:rgba(23,20,23,.8);
-  border:1px solid var(--line);
-}
-
-.intimate-card h3{
-  margin-bottom:12px;
-  font-size:26px;
-}
-
-.intimate-card p{
-  font-size:14px;
-}
-
-.classified{
-  background:#080708;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-
-.file{
-  max-width:650px;
-  margin:40px auto;
-  border:1px solid #392b2f;
-  background:#100e10;
-  padding:35px;
-}
-
-.file-row{
-  display:flex;
-  justify-content:space-between;
-  gap:20px;
-  padding:14px 0;
-  border-bottom:1px solid var(--line);
-  font-size:13px;
-}
-
-.file-row:last-child{
-  border:0;
-}
-
-.file-row span:last-child{
-  color:var(--rose2);
-}
-
-.reveal-btn{
-  display:block;
-  margin:30px auto 0;
-  background:var(--rose);
-  border:0;
-  color:#170f11;
-  padding:15px 25px;
-  letter-spacing:2px;
-  font-size:10px;
-  text-transform:uppercase;
-}
-
-.hidden-message{
+.secret{
   display:none;
-  text-align:center;
-  margin-top:25px;
-  color:var(--rose2);
-  font-family:"Playfair Display",serif;
-  font-size:25px;
+  color:var(--pink2);
+  font-size:.82rem;
 }
 
-.hidden-message.show{
+.nickname.open .secret{
   display:block;
 }
 
-.planet{
-  text-align:center;
-}
-
-.planet-box{
-  margin:50px auto 0;
-  max-width:800px;
-  padding:60px 40px;
-  border:1px solid var(--line);
-  background:
-    radial-gradient(circle at center,rgba(200,143,150,.13),transparent 60%),
-    var(--card);
-}
-
-.planet-word{
-  font-family:"Playfair Display",serif;
-  font-size:clamp(50px,9vw,105px);
-  color:var(--rose2);
-}
-
-.overthinking{
-  background:#0b0a0b;
-}
+/* TERMINAL */
 
 .terminal{
-  max-width:800px;
-  margin:45px auto;
-  background:#111;
-  border:1px solid #282528;
+  background:#060606;
+  border:1px solid #282328;
+  border-radius:18px;
   padding:25px;
   font-family:monospace;
-  color:#aaa;
-  line-height:2;
+  color:#a9c9a6;
+  margin-top:30px;
 }
 
-.terminal .pink{
-  color:var(--rose2);
+.terminal span{
+  color:var(--pink2);
 }
 
-.love-problem{
+/* TAP RECORDER */
+
+.tapbox{
+  text-align:center;
+  padding:60px 20px;
+  cursor:pointer;
+  min-height:250px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+.tapbox .hidden{
+  display:none;
+}
+
+/* WATER */
+
+.water{
+  text-align:center;
+  padding:50px 20px;
+  border:1px solid rgba(167,196,164,.25);
+  border-radius:22px;
+  background:rgba(167,196,164,.04);
+}
+
+.water-icon{
+  font-size:4rem;
+}
+
+.water button{
+  margin-top:20px;
+  border:1px solid var(--green);
+  background:transparent;
+  color:var(--text);
+  padding:12px 18px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+#waterText{
+  color:var(--green);
+  margin-top:15px;
+  min-height:25px;
+}
+
+/* INITIATIVE */
+
+.initiative{
+  background:linear-gradient(145deg,#24191c,#151113);
+  border-color:rgba(214,154,162,.25);
+}
+
+.meter{
+  height:8px;
+  background:#0b0a0b;
+  border-radius:20px;
+  overflow:hidden;
+  margin-top:20px;
+}
+
+.meter span{
+  display:block;
+  height:100%;
+  width:15%;
+  background:var(--pink);
+  transition:.5s;
+}
+
+#initiativeText{
+  color:var(--muted);
+  font-family:monospace;
+  margin-top:15px;
+  min-height:50px;
+}
+
+/* FLOWERS */
+
+.flower{
   text-align:center;
 }
 
-.chat-box{
-  max-width:600px;
-  margin:45px auto;
+.flower-count{
+  font-family:"Playfair Display";
+  font-size:5rem;
+  color:var(--pink2);
 }
 
-.chat{
-  padding:18px 22px;
-  margin:10px 0;
-  max-width:80%;
-  border:1px solid var(--line);
-  background:var(--card);
-  text-align:left;
+.flower button{
+  border:0;
+  background:var(--pink);
+  color:#180f11;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  font-size:1.4rem;
+  cursor:pointer;
 }
 
-.chat.you{
-  margin-left:auto;
-  border-color:rgba(227,181,184,.25);
-}
-
-.chat small{
-  display:block;
-  color:#777;
-  font-size:9px;
-  letter-spacing:2px;
-  margin-bottom:5px;
-  text-transform:uppercase;
-}
-
-.hu-btn{
-  margin-top:25px;
-  border:1px solid var(--rose);
-  background:transparent;
-  color:var(--rose2);
-  padding:15px 28px;
-}
+/* QUIZ */
 
 .quiz{
-  max-width:750px;
-  margin:45px auto;
-  background:var(--card);
-  border:1px solid var(--line);
-  padding:40px;
+  margin-top:30px;
 }
 
 .question{
-  margin-bottom:30px;
+  display:none;
 }
 
-.question h3{
-  font-size:24px;
-  margin-bottom:15px;
+.question.active{
+  display:block;
 }
 
-.option{
-  width:100%;
-  text-align:left;
-  margin:7px 0;
-  padding:14px 18px;
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--muted);
-  transition:.2s;
-}
-
-.option:hover{
-  border-color:var(--rose);
-  color:var(--ivory);
-}
-
-.result{
-  margin-top:25px;
-  color:var(--rose2);
-  font-family:"Playfair Display",serif;
-  font-size:24px;
-}
-
-.photo-wall{
+.answers{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin-top:50px;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  margin-top:20px;
+}
+
+.answer{
+  padding:14px;
+  border:1px solid var(--line);
+  background:#121113;
+  color:var(--text);
+  border-radius:14px;
+  cursor:pointer;
+  text-align:left;
+}
+
+.answer:hover{
+  border-color:var(--pink);
+}
+
+.correct{
+  border-color:var(--green)!important;
+}
+
+.wrong{
+  border-color:#a35e68!important;
+}
+
+#quizResult{
+  margin-top:20px;
+  color:var(--pink2);
+  min-height:25px;
+}
+
+/* MEMORY */
+
+.memory-buttons{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  margin-top:25px;
+}
+
+.memory-buttons button{
+  background:#141214;
+  color:var(--text);
+  border:1px solid var(--line);
+  padding:10px 14px;
+  border-radius:999px;
+  cursor:pointer;
+}
+
+#memoryText{
+  margin-top:25px;
+  color:var(--pink2);
+  font-family:"Playfair Display";
+  font-size:1.3rem;
+  min-height:60px;
+}
+
+/* PHOTO */
+
+.photo-section{
+  text-align:center;
 }
 
 .photo{
-  min-height:280px;
-  background:
-    linear-gradient(135deg,#211d20,#151315);
+  width:min(500px,90vw);
+  margin:40px auto 0;
+  border-radius:25px;
+  overflow:hidden;
   border:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:20px;
-  color:#766e6b;
-  font-size:11px;
-  letter-spacing:2px;
-  text-transform:uppercase;
+  cursor:pointer;
+  position:relative;
 }
 
-.photo:nth-child(2){
-  min-height:360px;
-}
-
-.photo:nth-child(4){
-  min-height:360px;
-}
-
-.tap{
-  text-align:center;
-}
-
-.tap-button{
-  margin:40px auto;
+.photo img{
+  width:100%;
   display:block;
-  width:180px;
-  height:180px;
-  border-radius:50%;
-  border:1px solid var(--rose);
-  background:transparent;
-  color:var(--rose2);
-  font-family:"Playfair Display",serif;
-  font-size:25px;
-  transition:.3s;
+  filter:blur(18px);
+  transform:scale(1.08);
+  transition:1s;
 }
 
-.tap-button:hover{
-  background:var(--rose);
-  color:#171012;
-  transform:scale(1.04);
+.photo.open img{
+  filter:blur(0);
+  transform:scale(1);
 }
 
-.tap-output{
-  min-height:35px;
-  color:var(--rose2);
-  font-family:"Playfair Display",serif;
-  font-size:27px;
-}
-
-.side-quest{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:18px;
-  margin-top:45px;
-}
-
-.story{
-  padding:35px;
-  border:1px solid var(--line);
-  background:var(--card);
-}
-
-.story h3{
-  margin-bottom:15px;
-}
-
-.future{
-  text-align:center;
-  background:
-    radial-gradient(circle at 50% 20%,rgba(200,143,150,.12),transparent 45%);
-}
-
-.future-list{
+.photo-cover{
+  position:absolute;
+  inset:0;
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
-  gap:10px;
-  margin:45px auto;
-  max-width:800px;
+  align-items:center;
+  background:rgba(0,0,0,.35);
+  font-size:.8rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  transition:.4s;
 }
 
-.future-pill{
-  padding:13px 18px;
-  border:1px solid var(--line);
-  background:var(--card);
-  color:var(--muted);
+.photo.open .photo-cover{
+  opacity:0;
 }
+
+/* LETTER */
 
 .letter{
-  max-width:800px;
-  margin:50px auto 0;
-  padding:55px;
-  background:#151215;
-  border:1px solid var(--line);
-  box-shadow:0 20px 70px rgba(0,0,0,.25);
-}
-
-.letter p{
-  color:#c3b9b4;
-  margin-bottom:20px;
-}
-
-.letter .signature{
-  color:var(--rose2);
-  font-family:"Playfair Display",serif;
-  font-size:27px;
+  background:#eee3d6;
+  color:#21191a;
+  padding:45px;
+  border-radius:22px;
   margin-top:35px;
 }
 
+.letter p{
+  margin-bottom:16px;
+}
+
+/* FINAL */
+
 .final{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-  justify-content:center;
   text-align:center;
-  background:
-    radial-gradient(circle,rgba(74,37,45,.4),transparent 60%);
+  padding-bottom:130px;
 }
 
 .final h2{
-  font-size:clamp(55px,10vw,125px);
+  font-size:clamp(3rem,8vw,7rem);
 }
 
-.final h2 em{
-  color:var(--rose2);
-}
-
-.final p{
-  max-width:550px;
-  margin:30px auto;
-}
-
-.restart{
-  border:1px solid var(--line);
-  background:transparent;
-  color:var(--muted);
-  padding:14px 25px;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:10px;
-}
-
-footer{
-  padding:25px;
-  text-align:center;
-  color:#514b49;
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.fade{
+.toast{
+  position:fixed;
+  bottom:25px;
+  left:50%;
+  transform:translate(-50%,20px);
   opacity:0;
-  transform:translateY(25px);
-  transition:opacity .9s ease,transform .9s ease;
+  background:#eee3d6;
+  color:#21191a;
+  padding:11px 18px;
+  border-radius:999px;
+  z-index:999;
+  transition:.3s;
+  font-size:.8rem;
 }
 
-.fade.visible{
+.toast.show{
   opacity:1;
-  transform:translateY(0);
+  transform:translate(-50%,0);
 }
 
-@media(max-width:800px){
+@media(max-width:750px){
+
   section{
-    padding:85px 6%;
+    padding:75px 5vw;
   }
 
-  .intro-grid,
-  .duo,
-  .intimate-grid,
-  .side-quest{
+  .grid,
+  .two{
     grid-template-columns:1fr;
   }
 
-  .card-grid{
+  .stats{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .answers{
     grid-template-columns:1fr;
-  }
-
-  .love-list{
-    grid-template-columns:1fr;
-  }
-
-  .photo-wall{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .photo,
-  .photo:nth-child(2),
-  .photo:nth-child(4){
-    min-height:220px;
-  }
-
-  .letter{
-    padding:30px;
   }
 
   .hero h1{
-    letter-spacing:-3px;
+    font-size:4rem;
   }
+
+  .letter{
+    padding:28px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<div id="loader">
-  <div class="loader-text">
-    <span>For one very specific person</span>
-    <h1>Loading us...</h1>
-  </div>
+<div class="toast" id="toast"></div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div>
+
+<span class="eyebrow">A very unnecessary website</span>
+
+<h1>
+A LITTLE PLACE<br>
+<span>CALLED US.</span>
+</h1>
+
+<p>
+Made for Ehsanul Hauqe Farhan.
+Also known as Khamba, Tap Recorder,
+Artist, Pig, and occasionally just Ehsan.
+</p>
+
+<button class="btn" onclick="scrollToId('intro')">
+ENTER THE CHAOS →
+</button>
+
 </div>
 
-<section class="hero" id="top">
-  <div class="hero-inner fade">
-    <div class="eyebrow">A tiny corner of the internet</div>
-
-    <h1>
-      A LITTLE<br>
-      <em>PLACE CALLED US</em>
-    </h1>
-
-    <p class="hero-sub">
-      Made for Ehsanul Hauqe Farhan.<br>
-      Also known as Khamba, Tap Recorder, and the person who somehow became my favourite.
-    </p>
-
-    <button class="enter-btn" onclick="document.getElementById('hello').scrollIntoView()">
-      Enter our little world
-    </button>
-  </div>
-
-  <div class="scroll-note">scroll slowly ↓</div>
 </section>
 
 
-<section class="intro" id="hello">
-  <div class="container intro-grid fade">
+<!-- INTRO -->
 
-    <div>
-      <div class="eyebrow">Hi, Ehsan</div>
+<section id="intro">
 
-      <div class="big-quote">
-        I could have bought you something.
-        <em>Instead, I made you a whole website.</em>
-      </div>
-    </div>
+<div class="wrap reveal">
 
-    <div>
-      <p>
-        Because apparently spending money wasn't enough.
-        I needed to spend hours remembering every tiny thing about us too.
-      </p>
+<span class="eyebrow">01 / Welcome</span>
 
-      <br>
+<h2>Hi, Ehsan.</h2>
 
-      <p>
-        So welcome to our little corner.
-        There may be embarrassing evidence here.
-        There may be things that make you smile.
-        There may even be things you will never let me forget.
-      </p>
+<p class="lead">
+I could have just sent you a message.
+But apparently that was too normal.
+So here we are.
+</p>
 
-      <br>
+<div class="grid">
 
-      <p style="color:var(--rose2)">
-        You are welcome, Khamba.
-      </p>
-    </div>
+<div class="card">
+<span class="tag">IMPORTANT</span>
+<h3>You talk too much.</h3>
+<p>
+This website has been designed to survive approximately
+7% of your stories before needing a break.
+</p>
+</div>
 
-  </div>
+<div class="card">
+<span class="tag">OBSERVATION</span>
+<h3>You are 6'2".</h3>
+<p>
+At this point I have accepted that I am dating infrastructure.
+</p>
+</div>
+
+<div class="card">
+<span class="tag">UNFORTUNATE</span>
+<h3>I like you.</h3>
+<p>
+This was not part of the original plan.
+Unfortunately, the situation escalated.
+</p>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- BOYFRIEND STATS -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">Unfortunately</div>
+<div class="wrap reveal center">
 
-    <h2>I LOVE...</h2>
+<span class="eyebrow">02 / Official statistics</span>
 
-    <div class="love-list">
+<h2>The Ehsan Report.</h2>
 
-      <div class="love-item"><span>01</span> your smile</div>
-      <div class="love-item"><span>02</span> your stupid jokes</div>
-      <div class="love-item"><span>03</span> your endless stories</div>
-      <div class="love-item"><span>04</span> the way you say “shuno”</div>
-      <div class="love-item"><span>05</span> your little efforts</div>
-      <div class="love-item"><span>06</span> the fact that you say sorry first</div>
-      <div class="love-item"><span>07</span> random walks with you</div>
-      <div class="love-item"><span>08</span> random food with you</div>
-      <div class="love-item"><span>09</span> how peaceful I feel around you</div>
-      <div class="love-item"><span>10</span> how ridiculously silly I become around you</div>
-      <div class="love-item"><span>11</span> how you remember the tiniest things</div>
-      <div class="love-item"><span>12</span> you. Unfortunately, very much.</div>
+<div class="stats">
 
-    </div>
-  </div>
+<div class="stat">
+<b>∞</b>
+<span>Yapping</span>
+</div>
+
+<div class="stat">
+<b>6'2"</b>
+<span>Height problem</span>
+</div>
+
+<div class="stat">
+<b>99%</b>
+<span>Overthinking</span>
+</div>
+
+<div class="stat">
+<b>100%</b>
+<span>Annoying</span>
+</div>
+
+</div>
+
+<p class="lead" style="margin:30px auto 0;">
+Scientific accuracy may be questionable.
+The boyfriend is not.
+</p>
+
+</div>
+
 </section>
 
+
+<!-- NICKNAMES -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">The beginning</div>
+<div class="wrap reveal">
 
-    <h2>HOW DID “HI”<br>BECOME “I LOVE YOU”?</h2>
+<span class="eyebrow">03 / The archive</span>
 
-    <div class="card-grid">
+<h2>Choose your character.</h2>
 
-      <div class="card">
-        <div class="card-number">01 — HI</div>
-        <p>
-          24 April 2020.<br>
-          It started with a conversation.
-          Nothing dramatic.
-          Just a hi.
-        </p>
-      </div>
+<p class="lead">
+Tap a nickname. Open the classified files.
+</p>
 
-      <div class="card">
-        <div class="card-number">02 — HABIT</div>
-        <p>
-          Conversations became habits.
-          Habits became comfort.
-          Comfort became attachment.
-        </p>
-      </div>
+<div class="grid">
 
-      <div class="card">
-        <div class="card-number">03 — OH NO</div>
-        <p>
-          And somewhere along the way,
-          this very annoying person became
-          my favourite person.
-        </p>
-      </div>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">SWEET</span>
+<h3>Toto Tara</h3>
+<p>Open file.</p>
+<div class="secret">
+Because apparently Tara needed a director's cut.
+</div>
+</div>
 
-    </div>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">HEIGHT</span>
+<h3>Khamba</h3>
+<p>Open file.</p>
+<div class="secret">
+6'2". That's literally the explanation.
+</div>
+</div>
 
-    <div class="center-text" style="margin-top:55px">
-      <p>
-        There wasn't one magical moment.
-        You just slowly became someone I couldn't imagine not having.
-      </p>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">YAPPER</span>
+<h3>Tap Recorder</h3>
+<p>Open file.</p>
+<div class="secret">
+No pause button has been found.
+</div>
+</div>
 
-      <br>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">CLASSIFIED</span>
+<h3>Pig</h3>
+<p>Open file.</p>
+<div class="secret">
+This information is above your security clearance.
+</div>
+</div>
 
-      <p style="color:var(--rose2);font-family:'Playfair Display',serif;font-size:25px">
-        Plot twist: I fell first.
-      </p>
-    </div>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">ARCHIVE</span>
+<h3>Artist</h3>
+<p>Open file.</p>
+<div class="secret">
+An ancient nickname from the archives.
+</div>
+</div>
 
-  </div>
+<div class="card nickname" onclick="this.classList.toggle('open')">
+<span class="tag">ARCHIVE</span>
+<h3>Dhakka Begum</h3>
+<p>Open file.</p>
+<div class="secret">
+Nobody knows why anymore.
+</div>
+</div>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- TAP RECORDER -->
 
 <section>
-  <div class="container">
 
-    <div class="eyebrow">How we got here</div>
+<div class="wrap reveal center">
 
-    <h2 class="fade">OUR LITTLE<br>TIMELINE</h2>
+<span class="eyebrow">04 / Audio department</span>
 
-    <div class="timeline">
+<h2>The Tap Recorder.</h2>
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">24 APRIL 2020</div>
-        <h3>The First “Hi”</h3>
-        <p>
-          The first conversation.
-          Neither of us knew what this little beginning would become.
-        </p>
-      </div>
+<p class="lead" style="margin:auto;">
+Press the button and experience approximately 4% of what happens when you start talking.
+</p>
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">3 APRIL 2021</div>
-        <h3>First Time We Met</h3>
-        <p>
-          At varsity.
-          Senior–junior era.
-          You looked older and bigger than I expected.
-          Turns out, you were younger.
-        </p>
-      </div>
+<div class="card tapbox" onclick="tapRecorder()">
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">2024</div>
-        <h3>The Plot Started Plotting</h3>
-        <p>
-          Somewhere around here, I finally realised
-          I had fallen first.
-        </p>
-      </div>
+<div id="tapStart">
+<div style="font-size:3rem;">🎙️</div>
+<h3>START YAPPING</h3>
+<p>Tap anywhere.</p>
+</div>
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">AUGUST 2024</div>
-        <h3>Almost Goodbye</h3>
-        <p>
-          Things felt like they might not continue.
-          And somehow, the story wasn't finished yet.
-        </p>
-      </div>
+<div class="hidden" id="tapResult">
+<h3 id="tapLine">Okay, listen—</h3>
+<p id="tapSub">This is going to take a while.</p>
+</div>
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">3 JULY 2025</div>
-        <h3>A Tiny Turning Point</h3>
-        <p>
-          A cheek kiss.
-          A very emotional day.
-          And a moment neither of us really knew what to do with.
-        </p>
-      </div>
+</div>
 
-      <div class="timeline-item fade">
-        <div class="timeline-dot"></div>
-        <div class="timeline-date">5 JULY 2025</div>
-        <h3>The Day Things Changed</h3>
-        <p>
-          We met.
-          We talked.
-          We sat by Dhanmondi Lake in the evening.
-          And somehow, after everything,
-          we understood each other a little better.
-        </p>
-      </div>
+</div>
 
-    </div>
-  </div>
 </section>
 
 
-<section class="plot-twist">
-  <div class="container fade">
-
-    <div class="eyebrow">The official plot twist</div>
-
-    <h2>
-      I FELL FIRST.
-      <em>BUT YOU FELL HARDER.</em>
-    </h2>
-
-    <p>
-      And honestly?
-      I love that for us.
-    </p>
-
-  </div>
-</section>
-
+<!-- FLOWERS -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">Our dynamic</div>
+<div class="wrap reveal">
 
-    <h2>THE TWO OF US</h2>
+<span class="eyebrow">05 / Suspiciously cute behaviour</span>
 
-    <div class="duo">
+<h2>The flower situation.</h2>
 
-      <div class="duo-box">
-        <div class="eyebrow">Ehsan</div>
-        <h3>Yapper.</h3>
-        <p>
-          “Accha shuno—”
-          <br>
-          “Actually—”
-          <br>
-          “Wait wait—”
-          <br>
-          “Tumi jano ki hoise?”
-        </p>
-      </div>
+<div class="grid two">
 
-      <div class="duo-box">
-        <div class="eyebrow">Toto Tara</div>
-        <h3>Listener.</h3>
-        <p>
-          Listening to approximately 847 stories,
-          23 side quests,
-          14 unnecessary details,
-          and somehow still wanting one more conversation.
-        </p>
-      </div>
+<div class="card flower">
 
-    </div>
+<div class="flower-count" id="flowerCount">0</div>
 
-  </div>
+<p>
+Unofficial flowers received counter.
+The real number is obviously higher.
+</p>
+
+<button onclick="addFlower()">+</button>
+
+</div>
+
+<div class="card">
+
+<h3>Yes, I notice.</h3>
+
+<p>
+You give me flowers a lot.
+Which is honestly suspicious behaviour from someone
+who also spends so much time annoying me.
+</p>
+
+<p style="color:var(--pink2);margin-top:20px;">
+Keep doing it.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- WATER -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">The archive</div>
+<div class="wrap reveal">
 
-    <h2>NICKNAMES</h2>
+<div class="water">
 
-    <p>
-      A perfectly normal collection of names for a perfectly normal relationship.
-    </p>
+<div class="water-icon">💧</div>
 
-    <div class="nicknames">
+<span class="eyebrow">06 / Most important section</span>
 
-      <div class="nickname"><strong>Toto Tara</strong> — his name for me</div>
-      <div class="nickname"><strong>Khamba</strong> — because 6'2" apparently wasn't enough</div>
-      <div class="nickname"><strong>Tap Recorder</strong> — because silence is apparently illegal</div>
-      <div class="nickname"><strong>Pig</strong> — classified information</div>
-      <div class="nickname"><strong>Artist</strong> — old lore</div>
-      <div class="nickname"><strong>Dhakka Begum</strong> — also old lore</div>
+<h2>Drink. Your. Water.</h2>
 
-    </div>
+<p class="lead" style="margin:auto;">
+This is not a romantic suggestion.
+This is boyfriend maintenance.
+</p>
 
-  </div>
+<button onclick="drinkWater()">
+YES, I DRANK WATER
+</button>
+
+<div id="waterText"></div>
+
+</div>
+
+</div>
+
 </section>
 
 
-<section class="name-section">
-  <div class="container fade">
-
-    <div class="eyebrow">A very specific weakness</div>
-
-    <h2>WHEN YOU SAY<br>“SHARNA”</h2>
-
-    <div class="name-reveal">
-
-      <p>
-        I don't know what it is.
-        Maybe it's just my name.
-      </p>
-
-      <div class="name">Sharna.</div>
-
-      <p>
-        But hearing it from you feels different.
-        Maybe because it's you saying it.
-      </p>
-
-      <br>
-
-      <p>
-        Keep calling me Toto Tara.
-        Keep annoying me.
-        Keep saying “shuno” every five minutes.
-        But every now and then...
-      </p>
-
-      <br>
-
-      <p style="color:var(--rose2)">
-        Just call me Sharna.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
+<!-- INITIATIVE -->
 
 <section>
-  <div class="container center-text fade">
 
-    <div class="eyebrow">Another embarrassing fact</div>
+<div class="wrap reveal">
 
-    <h2>THE NAME THAT<br>MAKES ME BLUSH</h2>
+<span class="eyebrow">07 / Serious complaint department</span>
 
-    <p>
-      Ehsan.
-    </p>
+<h2>The Initiative Department.</h2>
 
-    <br>
+<div class="card initiative">
 
-    <p>
-      Just your name.
-      Nothing special, right?
-      Wrong.
-    </p>
+<h3>Please take some steps yourself.</h3>
 
-    <br>
+<p style="margin-top:15px;">
+I love that you try.
+But sometimes I need you to actually
+<strong>take the first step.</strong>
+</p>
 
-    <p>
-      Whenever I hear someone say “Ehsan”,
-      my brain goes:
-    </p>
+<p style="margin-top:12px;">
+Plan something.
+Think of something.
+Start something.
+Surprise me sometimes.
+</p>
 
-    <br>
+<p style="margin-top:12px;">
+Because when I have to guide every single step,
+by the time you finally do it...
+<strong>the mood has already left the building.</strong>
+</p>
 
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:30px">
-      oh no.
-    </p>
+<p style="margin-top:12px;">
+I am your girlfriend.
+Not your project manager.
+</p>
 
-    <br>
+<div class="meter">
+<span id="initiativeMeter"></span>
+</div>
 
-    <p>
-      Somehow your name became one of my favourite words.
-      Very embarrassing.
-      Completely your fault.
-    </p>
+<div id="initiativeText">
+SYSTEM STATUS:
+Waiting for independent initiative...
+</div>
 
-  </div>
+<button class="btn" onclick="initiative()">
+TAKE A STEP →
+</button>
+
+</div>
+
+</div>
+
 </section>
 
 
-<section class="intimate">
-  <div class="container fade">
-
-    <div class="eyebrow">The tiny things</div>
-
-    <h2>THE LITTLE THINGS<br>WE DO</h2>
-
-    <div class="intimate-grid">
-
-      <div class="intimate-card">
-        <h3>Forehead Kisses</h3>
-        <p>
-          Your little forehead kisses.
-          They make everything feel softer.
-        </p>
-      </div>
-
-      <div class="intimate-card">
-        <h3>Hand Holding</h3>
-        <p>
-          Walking while holding hands,
-          even when we're literally going nowhere.
-        </p>
-      </div>
-
-      <div class="intimate-card">
-        <h3>Come Here.</h3>
-        <p>
-          Sometimes I don't even say it.
-          I just grab your shirt and pull you closer.
-        </p>
-      </div>
-
-      <div class="intimate-card">
-        <h3>The Biting Problem</h3>
-        <p>
-          Sometimes I bite you.
-          No explanation.
-          Just accept that this is part of the system.
-        </p>
-      </div>
-
-      <div class="intimate-card">
-        <h3>Minor Violence</h3>
-        <p>
-          Occasionally I kick your leg.
-          This is apparently also my love language.
-        </p>
-      </div>
-
-      <div class="intimate-card">
-        <h3>The Quiet Moments</h3>
-        <p>
-          The moments where nobody needs to say anything.
-          Just being close is enough.
-        </p>
-      </div>
-
-    </div>
-
-    <div class="center-text" style="margin-top:55px">
-      <p style="font-family:'Playfair Display',serif;font-size:28px;color:var(--rose2)">
-        Our love language is apparently physical affection + minor violence.
-      </p>
-    </div>
-
-  </div>
-</section>
-
+<!-- OVERTHINKING -->
 
 <section>
-  <div class="container center-text fade">
 
-    <div class="eyebrow">Something I really love</div>
+<div class="wrap reveal">
 
-    <h2>THE THING I LOVE<br>MOST ABOUT YOU</h2>
+<span class="eyebrow">08 / Brain department</span>
 
-    <p>
-      You remember things.
-    </p>
+<h2>Meanwhile, inside Ehsan's brain...</h2>
 
-    <br>
+<div class="terminal">
 
-    <p>
-      Little things I said once.
-      Things I like.
-      Things I don't like.
-      Things that hurt me.
-      Things that make me happy.
-      Tiny requests I probably forgot I even made.
-    </p>
+<p>> tiny situation detected.</p>
+<p>> processing...</p>
+<p>> processing...</p>
+<p>> processing...</p>
+<p>> creating 46 unnecessary scenarios...</p>
+<p>> girlfriend says: "it's okay."</p>
+<p>> brain: <span>"BUT WHAT IF—"</span></p>
+<p>> SYSTEM FAILURE.</p>
 
-    <br>
+</div>
 
-    <p>
-      You remember.
-      And then you actually try to follow those little details.
-    </p>
+</div>
 
-    <br>
-
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:28px">
-      You make my little things feel important.
-    </p>
-
-    <br>
-
-    <p>
-      Annoyingly attentive boyfriend.
-      10/10.
-      Would complain about you again.
-    </p>
-
-  </div>
 </section>
 
+
+<!-- TOUCH -->
 
 <section>
-  <div class="container center-text fade">
 
-    <div class="eyebrow">A tiny request</div>
+<div class="wrap reveal center">
 
-    <h2>PLEASE DON'T<br>CHANGE</h2>
+<span class="eyebrow">09 / Minor problem</span>
 
-    <p>
-      I notice your tiny changes.
-      Your tone.
-      Your habits.
-      The little things you do differently.
-    </p>
+<h2>There is also the touch problem.</h2>
 
-    <br>
+<div class="grid">
 
-    <p>
-      Sometimes even a very small change in you can affect my whole mood.
-    </p>
+<div class="card">
+<h3>Forehead kisses.</h3>
+<p>Approved.</p>
+</div>
 
-    <br>
+<div class="card">
+<h3>Holding hands.</h3>
+<p>Also approved.</p>
+</div>
 
-    <p>
-      I don't mean don't grow.
-      Don't learn.
-      Don't become better.
-    </p>
+<div class="card">
+<h3>Pulling your shirt.</h3>
+<p>Sometimes I need you closer.</p>
+</div>
 
-    <br>
+<div class="card">
+<h3>Biting.</h3>
+<p>No comment.</p>
+</div>
 
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:27px">
-      Just don't become a stranger while becoming someone new.
-    </p>
+<div class="card">
+<h3>Kicking your leg.</h3>
+<p>Affection, apparently.</p>
+</div>
 
-    <br>
+<div class="card">
+<h3>Your touch.</h3>
+<p>Butterflies are too mild. Animal Planet.</p>
+</div>
 
-    <p>
-      I like you as you.
-    </p>
+</div>
 
-  </div>
+</div>
+
 </section>
 
 
-<section class="classified">
-  <div class="container fade">
-
-    <div class="eyebrow">Restricted access</div>
-
-    <h2>THE CLASSIFIED<br>FILE</h2>
-
-    <div class="file">
-
-      <div class="file-row">
-        <span>SUBJECT</span>
-        <span>Ehsanul Hauqe Farhan</span>
-      </div>
-
-      <div class="file-row">
-        <span>KNOWN ALIASES</span>
-        <span>Khamba / Tap Recorder</span>
-      </div>
-
-      <div class="file-row">
-        <span>HEIGHT</span>
-        <span>6'2"</span>
-      </div>
-
-      <div class="file-row">
-        <span>YAPPING</span>
-        <span>EXTREME</span>
-      </div>
-
-      <div class="file-row">
-        <span>CUTENESS</span>
-        <span>ANNOYINGLY HIGH</span>
-      </div>
-
-      <div class="file-row">
-        <span>THREAT LEVEL</span>
-        <span>QUESTIONABLE</span>
-      </div>
-
-      <div class="file-row">
-        <span>FINAL CATEGORY</span>
-        <span>PRIVATE</span>
-      </div>
-
-      <button class="reveal-btn" onclick="revealFile()">
-        Attempt Access
-      </button>
-
-      <div id="classifiedMessage" class="hidden-message">
-        Nice try, Ehsan. 😶<br><br>
-        Some things are better left between us.
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="planet">
-  <div class="container fade">
-
-    <div class="eyebrow">Scientific observation</div>
-
-    <h2>THE ANIMAL PLANET<br>EFFECT</h2>
-
-    <div class="planet-box">
-
-      <p>
-        People say you get butterflies in your stomach when you're in love.
-      </p>
-
-      <div class="planet-word">Butterflies?</div>
-
-      <p>
-        Cute.
-      </p>
-
-      <br>
-
-      <p>
-        Mine is basically an entire episode of Animal Planet.
-      </p>
-
-      <br>
-
-      <p>
-        Because when you touch me,
-        my entire nervous system files a complaint.
-      </p>
-
-      <br>
-
-      <p>
-        You touch me → brain gone.<br>
-        You look at me → brain still gone.<br>
-        You say “Sharna” → somehow worse.
-      </p>
-
-      <br>
-
-      <p style="color:var(--rose2)">
-        Wildlife documentary. Full season.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="overthinking">
-  <div class="container fade">
-
-    <div class="eyebrow">One thing I absolutely do not love</div>
-
-    <h2>THE OVERTHINKING<br>DEPARTMENT</h2>
-
-    <div class="terminal">
-
-      <div><span class="pink">SYSTEM:</span> Ehsan detected.</div>
-      <div><span class="pink">INPUT:</span> One tiny situation.</div>
-      <div><span class="pink">PROCESS:</span> Overanalyse.</div>
-      <div><span class="pink">PROCESS:</span> Analyse the analysis.</div>
-      <div><span class="pink">PROCESS:</span> Create 17 possible scenarios.</div>
-      <div><span class="pink">PROCESS:</span> Worry about all 17.</div>
-      <div><span class="pink">TOTO TARA:</span> Ehsan. Shhh.</div>
-      <div><span class="pink">SYSTEM:</span> Continues thinking.</div>
-      <div><span class="pink">TOTO TARA:</span> Please uninstall Overthinking.exe.</div>
-
-    </div>
-
-    <div class="center-text">
-      <p>
-        I love many things about you.
-        Your overthinking?
-        Not one of them.
-      </p>
-
-      <br>
-
-      <p style="color:var(--rose2)">
-        But I love you even when your brain refuses to give you a day off.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-
-<section class="love-problem">
-  <div class="container fade">
-
-    <div class="eyebrow">A recurring problem</div>
-
-    <h2>THE “I LOVE YOU”<br>PROBLEM</h2>
-
-    <div class="chat-box">
-
-      <div class="chat">
-        <small>Toto Tara</small>
-        I love you.
-      </div>
-
-      <div class="chat you">
-        <small>Ehsan</small>
-        I love you more.
-      </div>
-
-      <div class="chat">
-        <small>Toto Tara</small>
-        hu hu hu
-      </div>
-
-    </div>
-
-    <button class="hu-btn" onclick="loveLoop()">
-      Try Again
-    </button>
-
-    <div id="loveResult" class="result">
-      SYSTEM STATUS: Ehsan refuses to lose.
-    </div>
-
-  </div>
-</section>
-
+<!-- QUIZ -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">Let's test something</div>
+<div class="wrap reveal">
 
-    <h2>HOW WELL DO YOU<br>KNOW TOTO TARA?</h2>
+<span class="eyebrow">10 / Relationship performance review</span>
 
-    <div class="quiz">
+<h2>How well do you know me?</h2>
 
-      <div class="question">
-        <h3>01. Who fell first?</h3>
+<p class="lead">
+This is your official boyfriend examination.
+Please do not cheat.
+</p>
 
-        <button class="option" onclick="answer(this,false)">Ehsan</button>
-        <button class="option" onclick="answer(this,true)">Toto Tara</button>
-        <button class="option" onclick="answer(this,false)">Nobody</button>
-      </div>
+<div class="card quiz">
 
-      <div class="question">
-        <h3>02. What happens when she's around you?</h3>
+<div class="question active" data-answer="1">
 
-        <button class="option" onclick="answer(this,true)">Brain activity becomes questionable</button>
-        <button class="option" onclick="answer(this,false)">She becomes more productive</button>
-        <button class="option" onclick="answer(this,false)">Nothing changes</button>
-      </div>
+<span class="tag">QUESTION 01</span>
 
-      <div class="question">
-        <h3>03. What is her ideal date?</h3>
+<h3>Who fell first?</h3>
 
-        <button class="option" onclick="answer(this,true)">Random walk + jhal muri + fuchka + random food</button>
-        <button class="option" onclick="answer(this,false)">Only fancy restaurants</button>
-        <button class="option" onclick="answer(this,false)">Business meeting</button>
-      </div>
+<div class="answers">
 
-      <div id="quizResult" class="result">
-        Answer honestly, Khamba.
-      </div>
+<button class="answer">Ehsan</button>
+<button class="answer">Toto Tara</button>
+<button class="answer">Nobody</button>
+<button class="answer">Tom Holland</button>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
+
+<div class="question" data-answer="0">
+
+<span class="tag">QUESTION 02</span>
+
+<h3>Who usually says sorry first?</h3>
+
+<div class="answers">
+
+<button class="answer">Ehsan</button>
+<button class="answer">Toto Tara</button>
+<button class="answer">Both</button>
+<button class="answer">Nobody</button>
+
+</div>
+
+</div>
+
+
+<div class="question" data-answer="2">
+
+<span class="tag">QUESTION 03</span>
+
+<h3>What happens when Ehsan touches Toto Tara?</h3>
+
+<div class="answers">
+
+<button class="answer">Nothing</button>
+<button class="answer">Normal reaction</button>
+<button class="answer">Animal Planet</button>
+<button class="answer">System update</button>
+
+</div>
+
+</div>
+
+
+<div class="question" data-answer="3">
+
+<span class="tag">QUESTION 04</span>
+
+<h3>What is the most important instruction?</h3>
+
+<div class="answers">
+
+<button class="answer">Stop talking</button>
+<button class="answer">Call me</button>
+<button class="answer">Eat food</button>
+<button class="answer">Drink water</button>
+
+</div>
+
+</div>
+
+<div id="quizResult"></div>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- DATE -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">Height department</div>
+<div class="wrap reveal center">
 
-    <h2>THE KHAMBA TEST</h2>
+<span class="eyebrow">11 / Date planning department</span>
 
-    <div class="center-text">
+<h2>Fancy dates?</h2>
 
-      <p>
-        How tall is the boyfriend?
-      </p>
+<p class="lead" style="margin:auto;">
+Not really.
+Give us a random road and something to eat.
+</p>
 
-      <br>
+<div class="grid">
 
-      <button class="option" style="max-width:500px" onclick="khamba(this,false)">5'8"</button>
-      <button class="option" style="max-width:500px" onclick="khamba(this,false)">5'11"</button>
-      <button class="option" style="max-width:500px" onclick="khamba(this,true)">6'2"</button>
-      <button class="option" style="max-width:500px" onclick="khamba(this,false)">Average human height</button>
+<div class="card">
+<h3>01</h3>
+<p>Random walk.</p>
+</div>
 
-      <div id="khambaResult" class="result">
-        Choose wisely.
-      </div>
+<div class="card">
+<h3>02</h3>
+<p>Jhal muri / fuchka / random food.</p>
+</div>
 
-    </div>
+<div class="card">
+<h3>03</h3>
+<p>Talk until we forget what time it is.</p>
+</div>
 
-  </div>
+</div>
+
+</div>
+
 </section>
 
+
+<!-- VERY EHSAN -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">The perfect date</div>
+<div class="wrap reveal">
 
-    <h2>OUR FAVOURITE<br>KIND OF DATE</h2>
+<span class="eyebrow">12 / Very specific information</span>
 
-    <div class="card-grid">
+<h2>Things that are aggressively Ehsan.</h2>
 
-      <div class="card">
-        <div class="card-number">01</div>
-        <h3>Random Roads</h3>
-        <p>
-          No perfect plan.
-          Just walking somewhere together.
-        </p>
-      </div>
+<div class="grid">
 
-      <div class="card">
-        <div class="card-number">02</div>
-        <h3>Random Food</h3>
-        <p>
-          Jhal muri.
-          Fuchka.
-          Naga drums.
-          Whatever looks good.
-        </p>
-      </div>
+<div class="card">
+<span class="tag">MARVEL</span>
+<h3>Tom Holland's Spider-Man.</h3>
+<p>
+With great power comes great responsibility.
+With great height comes great Khamba.
+</p>
+</div>
 
-      <div class="card">
-        <div class="card-number">03</div>
-        <h3>Just Us</h3>
-        <p>
-          No fancy restaurant required.
-          Sometimes ordinary is exactly what I want.
-        </p>
-      </div>
+<div class="card">
+<span class="tag">CHEF ERA</span>
+<h3>Learning to cook.</h3>
+<p>
+You are actually trying.
+I notice.
+</p>
+</div>
 
-    </div>
+<div class="card">
+<span class="tag">YAPPER ERA</span>
+<h3>"One more thing..."</h3>
+<p>
+There is never just one more thing.
+</p>
+</div>
 
-  </div>
+</div>
+
+</div>
+
 </section>
 
 
-<section class="photo-wall-section">
-  <div class="container fade">
-
-    <div class="eyebrow">Visual evidence</div>
-
-    <h2>THE PHOTO WALL</h2>
-
-    <p>
-      A few of my favourite moments with my favourite person.
-    </p>
-
-    <div class="photo-wall">
-
-      <div class="photo">YOUR PHOTO 01</div>
-      <div class="photo">YOUR PHOTO 02</div>
-      <div class="photo">YOUR PHOTO 03</div>
-      <div class="photo">YOUR PHOTO 04</div>
-      <div class="photo">YOUR PHOTO 05</div>
-      <div class="photo">YOUR PHOTO 06</div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="tap">
-  <div class="container fade">
-
-    <div class="eyebrow">Warning</div>
-
-    <h2>THE TAP RECORDER</h2>
-
-    <p>
-      Press the button.
-      You already know what happens.
-    </p>
-
-    <button class="tap-button" onclick="tapRecorder()">
-      TAP<br>RECORDER
-    </button>
-
-    <div id="tapOutput" class="tap-output">
-      Ready.
-    </div>
-
-  </div>
-</section>
-
+<!-- MEMORY -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">A very serious cinematic masterpiece</div>
+<div class="wrap reveal">
 
-    <h2>THE 365 DAYS FILE</h2>
+<span class="eyebrow">13 / Memory jar</span>
 
-    <div class="center-text">
+<h2>Pick a memory.</h2>
 
-      <p>
-        We watched 365 Days.
-      </p>
+<div class="memory-buttons">
 
-      <br>
+<button onclick="memory(0)">24 April 2020</button>
+<button onclick="memory(1)">3 April 2021</button>
+<button onclick="memory(2)">Random walks</button>
+<button onclick="memory(3)">Dhanmondi Lake</button>
+<button onclick="memory(4)">Flowers</button>
 
-      <p>
-        Why?
-      </p>
+</div>
 
-      <br>
+<div id="memoryText">
+Choose one.
+</div>
 
-      <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:28px">
-        No explanation available.
-      </p>
+</div>
 
-      <br>
-
-      <p>
-        Anyway.
-        Moving on.
-      </p>
-
-    </div>
-
-  </div>
 </section>
 
+
+<!-- POLICE -->
 
 <section>
-  <div class="container fade">
 
-    <div class="eyebrow">Very Ehsan</div>
+<div class="wrap reveal">
 
-    <h2>THE EHSAN EFFECT</h2>
+<span class="eyebrow">14 / Side quest</span>
 
-    <div class="card-grid">
+<h2>That police incident.</h2>
 
-      <div class="card">
-        <div class="card-number">01</div>
-        <h3>Yapping</h3>
-        <p>↑ Maximum</p>
-      </div>
+<div class="grid two">
 
-      <div class="card">
-        <div class="card-number">02</div>
-        <h3>Overthinking</h3>
-        <p>↑ Please stop</p>
-      </div>
+<div class="card">
 
-      <div class="card">
-        <div class="card-number">03</div>
-        <h3>Toto Tara's Brain</h3>
-        <p>↓ Questionable</p>
-      </div>
+<span class="tag">MEMORY</span>
 
-      <div class="card">
-        <div class="card-number">04</div>
-        <h3>Peace</h3>
-        <p>↑ Somehow higher</p>
-      </div>
+<h3>"Why are you laughing?"</h3>
 
-      <div class="card">
-        <div class="card-number">05</div>
-        <h3>Silliness</h3>
-        <p>↑ Maximum</p>
-      </div>
+<p>
+We got stopped unexpectedly,
+ended up paying money to leave,
+and somehow I was laughing.
+</p>
 
-      <div class="card">
-        <div class="card-number">06</div>
-        <h3>Cheek Pain</h3>
-        <p>↑ From laughing</p>
-      </div>
+</div>
 
-    </div>
+<div class="card">
 
-  </div>
+<span class="tag">IMPORTANT</span>
+
+<h3>My reaction was not helpful.</h3>
+
+<p>
+Your reaction was probably more normal.
+Mine was apparently comedy.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
 </section>
 
+
+<!-- 365 -->
 
 <section>
-  <div class="container center-text fade">
 
-    <div class="eyebrow">So what does it feel like?</div>
+<div class="wrap reveal center">
 
-    <h2>WHAT DOES IT<br>FEEL LIKE?</h2>
+<span class="eyebrow">15 / Cinema department</span>
 
-    <div class="card-grid">
+<h2>365 Days.</h2>
 
-      <div class="card"><h3>Peace.</h3></div>
-      <div class="card"><h3>Happy.</h3></div>
-      <div class="card"><h3>Silly.</h3></div>
-      <div class="card"><h3>Safe.</h3></div>
-      <div class="card"><h3>Home.</h3></div>
-      <div class="card"><h3>Sometimes angry.</h3></div>
+<div class="card">
 
-    </div>
+<h3>A very serious cinematic masterpiece.</h3>
 
-    <br><br>
+<p>
+Do not ask.
+We have no explanation.
+Moving on.
+</p>
 
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:30px">
-      All of it.
-    </p>
+<div style="font-size:4rem;margin-top:20px;">
+🎬
+</div>
 
-    <br>
+</div>
 
-    <p>
-      That's what you feel like.
-    </p>
+</div>
 
-  </div>
 </section>
 
 
-<section class="side-quest">
-  <div class="container">
+<!-- PHOTO LAST -->
 
-    <div class="eyebrow">Random side quests</div>
+<section class="photo-section">
 
-    <h2 class="fade">OUR CHAOTIC<br>MEMORIES</h2>
+<div class="wrap reveal">
 
-    <div class="side-quest">
+<span class="eyebrow">16 / Final evidence</span>
 
-      <div class="story">
-        <div class="eyebrow">Side Quest #01</div>
-        <h3>The Police Incident</h3>
-        <p>
-          We were stopped randomly.
-          We weren't doing anything.
-          The whole thing became so absurd that I started laughing.
-          The officer even asked why I was laughing.
-          You ended up paying money so we could leave.
-        </p>
+<h2>Okay fine. One photo.</h2>
 
-        <br>
+<p class="lead" style="margin:auto;">
+You made it this far.
+You get exactly one.
+</p>
 
-        <p style="color:var(--rose2)">
-          10/10 date. Very romantic.
-        </p>
-      </div>
+<div class="photo" onclick="this.classList.toggle('open')">
 
-      <div class="story">
-        <div class="eyebrow">Side Quest #02</div>
-        <h3>The Cooking Arc</h3>
-        <p>
-          You are genuinely learning how to cook for me.
-          Which is both extremely cute
-          and a little dangerous.
-        </p>
+<!-- CHANGE THIS FILE NAME TO YOUR PHOTO -->
 
-        <br>
+<img src="ehsan.jpg" alt="Us">
 
-        <p style="color:var(--rose2)">
-          Chef Khamba loading...
-        </p>
-      </div>
+<div class="photo-cover">
+Click to reveal
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
+
 </section>
 
+
+<!-- SOFT PART -->
 
 <section>
-  <div class="container center-text fade">
 
-    <div class="eyebrow">Very important information</div>
-
-    <h2>SPIDER-MAN<br>FILE</h2>
-
-    <p>
-      You love Tom Holland's Spider-Man.
-    </p>
-
-    <br>
-
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:30px">
-      With great power comes great responsibility.
-    </p>
-
-    <br>
-
-    <p>
-      With great height comes great Khamba.
-    </p>
-
-    <br>
-
-    <p>
-      Sorry, Tom Holland.
-    </p>
-
-  </div>
-</section>
-
-
-<section class="future">
-  <div class="container fade">
-
-    <div class="eyebrow">No grand promises</div>
-
-    <h2>AND MAYBE,<br>SOMEDAY...</h2>
-
-    <p>
-      I don't need some huge cinematic plan.
-      I just want more ordinary days that somehow become memories.
-    </p>
-
-    <div class="future-list">
-
-      <div class="future-pill">More random walks</div>
-      <div class="future-pill">More random food</div>
-      <div class="future-pill">More sunsets</div>
-      <div class="future-pill">More stupid pictures</div>
-      <div class="future-pill">More cooking attempts</div>
-      <div class="future-pill">More Spider-Man debates</div>
-      <div class="future-pill">More “shuno”</div>
-      <div class="future-pill">More laughing until our cheeks hurt</div>
-      <div class="future-pill">More ordinary days</div>
-
-    </div>
-
-    <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:30px">
-      Just more days with you.
-    </p>
-
-  </div>
-</section>
-
-
-<section>
-  <div class="container fade">
-
-    <div class="eyebrow">The softer part</div>
-
-    <h2>YOU MAKE<br>MY DETAILS MATTER</h2>
-
-    <div class="center-text">
-
-      <p>
-        I know I can be complicated.
-        I know I notice tiny things.
-        I know tiny changes in you can affect me more than they probably should.
-      </p>
-
-      <br>
-
-      <p>
-        But you remember.
-        You listen.
-        You try.
-        You say sorry.
-        You try to make me happy when I'm upset.
-      </p>
-
-      <br>
-
-      <p>
-        And I think that's one of the reasons
-        I kept falling for you.
-      </p>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section>
-  <div class="container fade">
-
-    <div class="eyebrow">One final confession</div>
-
-    <h2>LOCKED LETTER</h2>
-
-    <div class="center-text">
-
-      <p>
-        Before opening this,
-        answer one question.
-      </p>
-
-      <br>
-
-      <p style="font-family:'Playfair Display',serif;color:var(--rose2);font-size:31px">
-        Who fell first?
-      </p>
-
-      <br>
-
-      <button class="reveal-btn" onclick="openLetter()">
-        Unlock
-      </button>
-
-      <div id="lockedLetter" class="hidden-message">
-        Me. Obviously. 😭<br><br>
-        But you fell harder.
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section>
-  <div class="container fade">
-
-    <div class="eyebrow">Dear Ehsan</div>
-
-    <h2>THE LETTER</h2>
-
-    <div class="letter">
-
-      <p>
-        Dear Ehsan,
-      </p>
-
-      <p>
-        Somewhere between random conversations,
-        endless stories, stupid jokes, random walks,
-        food, little fights, apologies, forehead kisses,
-        hand holding, and all the tiny moments in between...
-        you became my favourite person.
-      </p>
-
-      <p>
-        You annoy me.
-        You talk too much.
-        You overthink absolutely everything.
-        You can make me angry in ways that should honestly be illegal.
-      </p>
-
-      <p>
-        But somehow, you're also the person who makes me feel peaceful.
-        Safe.
-        Happy.
-        Silly.
-        Like I don't have to think about everything for a while.
-      </p>
-
-      <p>
-        I love the way you remember my little things.
-        I love the way you try.
-        I love your forehead kisses.
-        I love holding your hand.
-        I love pulling you closer by your shirt.
-        I even love the ridiculous little ways I annoy you.
-      </p>
-
-      <p>
-        I don't think I can explain exactly when “hi”
-        became “I love you.”
-        Maybe there wasn't a single moment.
-        Maybe it happened slowly.
-      </p>
-
-      <p>
-        I just know that one day,
-        I realised you weren't just someone I talked to.
-        You were someone I wanted in my ordinary days.
-      </p>
-
-      <p>
-        I fell first.
-        But you fell harder.
-      </p>
-
-      <p>
-        And honestly, Khamba...
-        I'm very glad you did.
-      </p>
-
-      <p>
-        Happy Boyfriend Day.
-      </p>
-
-      <p>
-        I love you.
-        More than this tiny website could ever fit.
-      </p>
-
-      <div class="signature">
-        — Your Toto Tara
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-<section class="final">
-  <div class="container fade">
-
-    <div class="eyebrow">October 3, 2026</div>
-
-    <h2>
-      HAPPY<br>
-      <em>BOYFRIEND DAY,</em><br>
-      EHSAN.
-    </h2>
-
-    <p>
-      Thank you for being my favourite person.
-    </p>
-
-    <br>
-
-    <button class="restart" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      Start Over
-    </button>
-
-    <br><br>
-
-    <p style="font-size:11px;color:#5f5855">
-      P.S. You can come back here whenever you miss me.
-    </p>
-
-  </div>
-</section>
-
-<footer>
-  A LITTLE PLACE CALLED US · MADE WITH LOVE & A QUESTIONABLE AMOUNT OF EMOTIONAL DAMAGE
-</footer>
-
-
-<script>
-
-window.addEventListener("load",function(){
-  setTimeout(function(){
-    document.getElementById("loader").classList.add("hide");
-    document.querySelector(".hero-inner").classList.add("visible");
-  },900);
-});
-
-
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add("visible");
-    }
-  });
-},{
-  threshold:.12
-});
-
-document.querySelectorAll(".fade").forEach(el=>{
-  observer.observe(el);
-});
-
-
-function revealFile(){
-  document.getElementById("classifiedMessage").classList.toggle("show");
-}
-
-
-function loveLoop(){
-  const result=document.getElementById("loveResult");
-
-  const lines=[
-    "Ehsan: I love you more.",
-    "Ehsan: Still more.",
-    "Ehsan: You can't win.",
-    "Toto Tara: hu hu hu.",
-    "SYSTEM ERROR: Ehsan refuses to lose."
-  ];
-
-  let i=0;
-
-  result.textContent=lines[i];
-
-  const interval=setInterval(()=>{
-    i++;
-
-    if(i>=lines.length){
-      clearInterval(interval);
-      return;
-    }
-
-    result.textContent=lines[i];
-  },700);
-}
-
-
-function answer(button,correct){
-  const result=document.getElementById("quizResult");
-
-  if(correct){
-    result.textContent="Correct. You may continue, Khamba. 🫡";
-  }else{
-    result.textContent="Wrong. How dare you. Try again. 😭";
-  }
-}
-
-
-function khamba(button,correct){
-  const result=document.getElementById("khambaResult");
-
-  if(correct){
-    result.textContent="Correct. Unnecessarily tall. Official Khamba status confirmed.";
-  }else{
-    result.textContent="Wrong. Please look up.";
-  }
-}
-
-
-const tapLines=[
-  "Accha shuno—",
-  "Actually—",
-  "Wait wait—",
-  "Tumi jano ki hoise?",
-  "One more thing—",
-  "Basically—",
-  "Accha but shuno—",
-  "No no, last thing—"
-    
-];
-
-let tapIndex=0;
-
-function tapRecorder(){
-  const output=document.getElementById("tapOutput");
-
-  if(tapIndex<tapLines.length){
-    output.textContent=tapLines[tapIndex];
-    tapIndex++;
-  }else{
-    output.textContent="TAP RECORDER OVERHEATED.";
-    tapIndex=0;
-  }
-}
-
-
-function openLetter(){
-  document.getElementById("lockedLetter").classList.toggle("show");
-}
-
-</script>
-
-</body>
-</html>
+<div class="wrap reveal">
+
+<span class="eyebrow">17 / Okay, one serious minute</span>
+
+<h2>For the record...</h2>
+
+<div class="letter">
+
+<p>
+You are annoying.
+</p>
+
+<p>
+You overthink.
+You yap.
+You make me angry.
+You are ridiculously tall.
+You occasionally need very obvious instructions.
+</p>
+
+<p>
+But you also remember things.
+You notice little things.
+You try.
+You care.
+You give me flowers.
+You make me laugh.
+You make ordinary days fun.
+</p>
+
+<p>
+And somewhere along the way,
+you became som
