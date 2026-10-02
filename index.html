@@ -1724,6 +1724,48 @@ function memory(index){
   });
   </script>   
 <!-- ==================== MUSIC PLAYER CODE END ==================== -->
+  <!-- ==================== LOVER SONG START ==================== -->
+
+<div class="music-player-box">
+  <button id="loverBtn" class="music-btn">
+    🎵 Play Lover
+  </button>
+  <audio id="loverMusic" loop preload="auto">
+    <source src="Lover.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<script>
+  const loverAudio = document.getElementById('loverMusic');
+  const loverBtn = document.getElementById('loverBtn');
+  const duniyaaAudio = document.getElementById('bgMusic');
+  const duniyaaBtn = document.getElementById('musicToggleBtn');
+
+  loverBtn.addEventListener('click', () => {
+    if (loverAudio.paused) {
+      duniyaaAudio.pause();
+      duniyaaBtn.innerHTML = "🎵 Play Duniyaa";
+      duniyaaBtn.classList.remove("playing");
+
+      loverAudio.play();
+      loverBtn.innerHTML = "⏸️ Pause Lover";
+      loverBtn.classList.add("playing");
+    } else {
+      loverAudio.pause();
+      loverBtn.innerHTML = "🎵 Play Lover";
+      loverBtn.classList.remove("playing");
+    }
+  });
+
+  // Duniyaa shuru hole Lover auto pause hobe
+  duniyaaAudio.addEventListener('play', () => {
+    loverAudio.pause();
+    loverBtn.innerHTML = "🎵 Play Lover";
+    loverBtn.classList.remove("playing");
+  });
+</script>
+
+<!-- ==================== LOVER SONG END ==================== -->
  <!-- ==================== LOVE COUNTER CODE START ==================== -->
 
 <!-- ১. লাভ কাউন্টার ডিসপ্লে (HTML) -->
@@ -1978,6 +2020,156 @@ function memory(index){
 </script>
 
 <!-- ==================== SARCASTIC OPEN WHEN & BACK TO TOP END ==================== -->
-  
+<!-- ==================== EMERGENCY TOOLKIT START ==================== -->
+
+<div class="fun-box">
+  <h2 class="fun-title">Emergency Toolkit 🚨</h2>
+  <p class="fun-sub">(For Ehsan only. Use responsibly.)</p>
+
+  <div class="fun-card">
+    <h3>🔮 Should I take the first step?</h3>
+    <button class="fun-btn" onclick="askOracle()">Ask the Oracle</button>
+    <div class="fun-out" id="oracleOut"></div>
+  </div>
+
+  <div class="fun-card">
+    <h3>🥺 Sorry Generator</h3>
+    <button class="fun-btn" onclick="makeSorry()">Generate Sorry</button>
+    <div class="fun-out" id="sorryOut"></div>
+  </div>
+
+  <div class="fun-card">
+    <h3>⏱️ Time spent here</h3>
+    <div class="fun-time" id="timeOut">0s</div>
+    <div class="fun-out" id="timeMsg">Just warming up...</div>
+  </div>
+</div>
+
+<style>
+  .fun-box{
+    align-self:center;
+    width:100%;
+    max-width:600px;
+    margin:40px auto 20px;
+    padding:0 15px;
+    text-align:center;
+  }
+  .fun-title{
+    color:#ff758f;
+    font-size:22px;
+    margin-bottom:4px;
+  }
+  .fun-sub{
+    color:rgba(255,255,255,.6);
+    font-size:12px;
+    margin-bottom:20px;
+  }
+  .fun-card{
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:12px;
+    padding:18px;
+    margin-bottom:15px;
+  }
+  .fun-card h3{
+    font-size:16px;
+    color:#fff;
+    margin-bottom:12px;
+  }
+  .fun-btn{
+    background:transparent;
+    border:2px solid #ff4d6d;
+    color:#ff4d6d;
+    padding:9px 20px;
+    border-radius:30px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.3s;
+  }
+  .fun-btn:hover{
+    background:#ff4d6d;
+    color:#fff;
+  }
+  .fun-out{
+    margin-top:14px;
+    color:#ffb3c1;
+    font-size:14px;
+    min-height:20px;
+  }
+  .fun-time{
+    font-size:28px;
+    font-weight:bold;
+    color:#fff;
+  }
+  .pop-emoji{
+    position:fixed;
+    pointer-events:none;
+    font-size:22px;
+    z-index:9999;
+    animation:popUp 1s ease-out forwards;
+  }
+  @keyframes popUp{
+    from{ opacity:1; transform:translateY(0) scale(1); }
+    to{ opacity:0; transform:translateY(-70px) scale(1.5); }
+  }
+</style>
+
+<script>
+  const oracleAnswers = [
+    "Yes. Right now. Not after 3 hours of thinking.",
+    "Signs point to: stop asking, start doing.",
+    "Outlook good. But plan it yourself this time.",
+    "Ask again after drinking water. 💧",
+    "The Oracle says: she already knows what you should do. Think harder.",
+    "Yes. And bring flowers. 🌷"
+  ];
+
+  const sorryLines = [
+    "Sorry. I will drink water immediately. 💧",
+    "Sorry. I talked too much. Again. 🎙️",
+    "Sorry. I should have taken the first step. I will try. Probably.",
+    "Sorry, Toto Tara. You were right. As always. 👑",
+    "Sorry. Here, have a flower. 🌷",
+    "Sorry. I overthought it. 46 scenarios, all wrong."
+  ];
+
+  function askOracle(){
+    const i = Math.floor(Math.random() * oracleAnswers.length);
+    document.getElementById("oracleOut").textContent = oracleAnswers[i];
+  }
+
+  function makeSorry(){
+    const i = Math.floor(Math.random() * sorryLines.length);
+    document.getElementById("sorryOut").textContent = sorryLines[i];
+  }
+
+  let funSeconds = 0;
+  setInterval(function(){
+    funSeconds++;
+    const m = Math.floor(funSeconds / 60);
+    const s = funSeconds % 60;
+    document.getElementById("timeOut").textContent =
+      (m > 0 ? m + "m " : "") + s + "s";
+
+    let msg = "Just warming up...";
+    if(funSeconds >= 30)  msg = "Still here? Respect.";
+    if(funSeconds >= 120) msg = "You are reading everything. Suspicious. 🤨";
+    if(funSeconds >= 300) msg = "5 minutes. Okay, you officially like this website.";
+    document.getElementById("timeMsg").textContent = msg;
+  }, 1000);
+
+  const popEmojis = ["💖", "🌷", "💧", "🎙️", "✨"];
+  document.addEventListener("click", function(e){
+    const el = document.createElement("span");
+    el.className = "pop-emoji";
+    el.textContent = popEmojis[Math.floor(Math.random() * popEmojis.length)];
+    el.style.left = e.clientX + "px";
+    el.style.top = e.clientY + "px";
+    document.body.appendChild(el);
+    setTimeout(function(){ el.remove(); }, 1000);
+  });
+</script>
+
+<!-- ==================== EMERGENCY TOOLKIT END ==================== -->  
 </body>
 </html>
