@@ -1646,7 +1646,121 @@ function memory(index){
     memories[index];
 
 }
+<!-- ==================== MUSIC PLAYER CODE START ==================== -->
 
+<!-- ১. মিউজিক প্লেয়ার বাটন (HTML) -->
+<div class="music-player-box">
+  <button id="musicToggleBtn" class="music-btn">
+    🎵 Play Duniyaa
+  </button>
+  <audio id="bgMusic" loop preload="auto">
+    <source src="duniyaa.mp3" type="audio/mpeg">
+  </audio>
+</div>
+
+<!-- ২. মিউজিক প্লেয়ার ডিজাইন (CSS) -->
+<style>
+  .music-player-box {
+    text-align: center;
+    margin: 20px 0;
+  }
+
+  .music-btn {
+    background-color: #ff4d6d;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 77, 109, 0.3);
+  }
+
+  .music-btn:hover {
+    transform: translateY(-2px) scale(1.03);
+    background-color: #ff758f;
+    box-shadow: 0 6px 16px rgba(255, 77, 109, 0.4);
+  }
+
+  .music-btn.playing {
+    background-color: #2b2b2b;
+  }
+</style>
+
+<!-- ৩. মিউজিক প্লেয়ার ফাংশনালিটি (JavaScript) -->
+<script>
+  const music = document.getElementById('bgMusic');
+  const btn = document.getElementById('musicToggleBtn');
+
+  btn.addEventListener('click', () => {
+    if (music.paused) {
+      music.play();
+      btn.innerHTML = "⏸️ Pause Music";
+      btn.classList.add("playing");
+    } else {
+      music.pause();
+      btn.innerHTML = "🎵 Play Duniyaa";
+      btn.classList.remove("playing");
+    }
+  });
+<!-- ==================== MUSIC PLAYER CODE END ==================== -->
+ <!-- ==================== LOVE COUNTER CODE START ==================== -->
+
+<!-- ১. লাভ কাউন্টার ডিসপ্লে (HTML) -->
+<div class="love-counter-box">
+  <h3>We've been together for</h3>
+  <div id="loveCounterDisplay" class="counter-text">0 Days</div>
+</div>
+
+<!-- ২. লাভ কাউন্টার ডিজাইন (CSS) -->
+<style>
+  .love-counter-box {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    margin: 30px auto;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+  }
+
+  .love-counter-box h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ff758f;
+    margin-bottom: 8px;
+  }
+
+  .counter-text {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+</style>
+
+<!-- ৩. লাভ কাউন্টার লজিক (JavaScript) -->
+<script>
+  // ৫ই জুলাই ২০২৫ থেকে আজকের দিন পর্যন্ত অটোমেটিক হিসাব করবে
+  const relationshipStartDate = new Date('2025-07-05'); 
+
+  function calculateLoveDays() {
+    const today = new Date();
+    const diffTime = Math.abs(today - relationshipStartDate);
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    
+    const displayElement = document.getElementById('loveCounterDisplay');
+    if (displayElement) {
+      displayElement.innerText = diffDays + " Days 💕";
+    }
+  }
+
+  calculateLoveDays();
+<!-- ==================== LOVE COUNTER CODE END ==================== -->
+  
 </script>
 
 </body>
