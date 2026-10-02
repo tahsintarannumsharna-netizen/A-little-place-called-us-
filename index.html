@@ -1813,6 +1813,154 @@ function memory(index){
 </script>
 
 <!-- ==================== CONFETTI & HEART POP END ==================== -->
+  <!-- ==================== SARCASTIC OPEN WHEN & BACK TO TOP START ==================== -->
+
+<!-- 1. Sarcastic Open When Letters (HTML) -->
+<div class="open-when-section">
+  <h2 class="section-title">Open When... 💌</h2>
+  <p class="section-subtitle">(Read only when strictly applicable!)</p>
+
+  <div class="letters-grid">
+    <div class="letter-card" onclick="toggleLetter('letter1')">
+      <h3>😤 Open when you're mad at me</h3>
+      <div id="letter1" class="letter-content">
+        <p>Warning ⚠️️: Before you get mad, remember who stops talking first! Better cool down quickly and come talk nicely, or enjoy the dangerous silence. 😉🤐</p>
+      </div>
+    </div>
+
+    <div class="letter-card" onclick="toggleLetter('letter2')">
+      <h3>🥺 Open when you miss me</h3>
+      <div id="letter2" class="letter-content">
+        <p>Cute! But I'm probably sleeping, eating, or planning how to annoy you next. Text me instead of staring at this screen! 📱✨</p>
+      </div>
+    </div>
+
+    <div class="letter-card" onclick="toggleLetter('letter3')">
+      <h3>👑 Open when you think you're right</h3>
+      <div id="letter3" class="letter-content">
+        <p>Nice try, Ehsan! But let's be real here—I am ALWAYS right. Case closed! 👑😎</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 2. Back to Top Button with Sarcastic Prompt -->
+<div class="back-to-top-box">
+  <p class="loop-sarcasm">Really? After seeing all this, you want to re-experience it all over again? 🙄🔁</p>
+  <button onclick="scrollToTop()" class="top-switch-btn">
+    🚀 Back to the Beginning
+  </button>
+</div>
+
+<!-- 3. Styling (CSS) -->
+<style>
+  .open-when-section {
+    text-align: center;
+    margin: 40px auto 20px auto;
+    max-width: 600px;
+    padding: 0 15px;
+  }
+
+  .section-title {
+    color: #ff758f;
+    font-size: 22px;
+    margin-bottom: 4px;
+  }
+
+  .section-subtitle {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+
+  .letters-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .letter-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+  }
+
+  .letter-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .letter-card h3 {
+    margin: 0;
+    font-size: 15px;
+    color: #ffffff;
+  }
+
+  .letter-content {
+    display: none;
+    margin-top: 12px;
+    padding-top: 10px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.2);
+    color: #ffb3c1;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .back-to-top-box {
+    text-align: center;
+    margin: 40px 0 20px 0;
+  }
+
+  .loop-sarcasm {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 13px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  .top-switch-btn {
+    background: transparent;
+    border: 2px solid #ff4d6d;
+    color: #ff4d6d;
+    padding: 10px 22px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .top-switch-btn:hover {
+    background: #ff4d6d;
+    color: #ffffff;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+  }
+</style>
+
+<!-- 4. Script -->
+<script>
+  function toggleLetter(id) {
+    const el = document.getElementById(id);
+    if (el.style.display === "block") {
+      el.style.display = "none";
+    } else {
+      el.style.display = "block";
+    }
+  }
+
+  function scrollToTop() {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  }
+</script>
+
+<!-- ==================== SARCASTIC OPEN WHEN & BACK TO TOP END ==================== -->
   
 </body>
 </html>
