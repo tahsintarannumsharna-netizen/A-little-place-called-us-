@@ -1762,6 +1762,57 @@ function memory(index){
 <!-- ==================== LOVE COUNTER CODE END ==================== -->
   
 </script>
+<!-- ==================== CONFETTI & HEART POP START ==================== -->
 
+<!-- ১. বাইরের Confetti Library (Head বা Body-র যেকোনো স্থানে কাজ করবে) -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+<!-- ২. সেলিব্রেট বাটন (HTML) -->
+<div class="celebrate-box">
+  <button onclick="popHearts()" class="celebrate-btn">
+    🎉 Celebrate Our Day ❤️
+  </button>
+</div>
+
+<!-- ৩. সেলিব্রেট বাটন ডিজাইন (CSS) -->
+<style>
+  .celebrate-box {
+    text-align: center;
+    margin: 30px 0;
+  }
+
+  .celebrate-btn {
+    background: linear-gradient(135deg, #ff4d6d, #ff758f);
+    color: #ffffff;
+    border: none;
+    padding: 14px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255, 77, 109, 0.4);
+    transition: all 0.3s ease;
+  }
+
+  .celebrate-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 20px rgba(255, 77, 109, 0.6);
+  }
+</style>
+
+<!-- ৪. কনফেটি পপ লজিক (JavaScript) -->
+<script>
+  function popHearts() {
+    confetti({
+      particleCount: 70,
+      spread: 70,
+      origin: { y: 0.7 },
+      colors: ['#ff4d6d', '#ff758f', '#ffb3c1', '#ffffff']
+    });
+  }
+</script>
+
+<!-- ==================== CONFETTI & HEART POP END ==================== -->
+  
 </body>
 </html>
