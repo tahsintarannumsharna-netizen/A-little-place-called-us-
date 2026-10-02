@@ -580,7 +580,7 @@ Also known as Khamba, Tap Recorder,
 Artist, Pig, and occasionally just Ehsan.
 </p>
 
-<button class="btn" onclick="scrollToId('intro')">
+<button class="btn" onclick="enterChaos()">
 ENTER THE CHAOS →
 </button>
 
@@ -1764,7 +1764,20 @@ function memory(index){
     loverBtn.classList.remove("playing");
   });
 </script>
+  function enterChaos() {
+    scrollToId('intro');
 
+    if (loverAudio.paused) {
+      duniyaaAudio.pause();
+      duniyaaBtn.innerHTML = "🎵 Play Duniyaa";
+      duniyaaBtn.classList.remove("playing");
+
+      loverAudio.play().then(() => {
+        loverBtn.innerHTML = "⏸️ Pause Lover";
+        loverBtn.classList.add("playing");
+      }).catch(() => {});
+    }
+  }
 <!-- ==================== LOVER SONG END ==================== -->
  <!-- ==================== LOVE COUNTER CODE START ==================== -->
 
