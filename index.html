@@ -1726,58 +1726,33 @@ function memory(index){
 <!-- ==================== MUSIC PLAYER CODE END ==================== -->
   <!-- ==================== LOVER SONG START ==================== -->
 
-<div class="music-player-box">
-  <button id="loverBtn" class="music-btn">
-    🎵 Play Lover
-  </button>
-  <audio id="loverMusic" loop preload="auto">
-    <source src="Lover.mp3" type="audio/mpeg">
-  </audio>
-</div>
+<audio id="loverMusic" loop preload="auto">
+  <source src="Lover.mp3" type="audio/mpeg">
+</audio>
 
 <script>
   const loverAudio = document.getElementById('loverMusic');
-  const loverBtn = document.getElementById('loverBtn');
   const duniyaaAudio = document.getElementById('bgMusic');
   const duniyaaBtn = document.getElementById('musicToggleBtn');
 
-  loverBtn.addEventListener('click', () => {
-    if (loverAudio.paused) {
-      duniyaaAudio.pause();
-      duniyaaBtn.innerHTML = "🎵 Play Duniyaa";
-      duniyaaBtn.classList.remove("playing");
-
-      loverAudio.play();
-      loverBtn.innerHTML = "⏸️ Pause Lover";
-      loverBtn.classList.add("playing");
-    } else {
-      loverAudio.pause();
-      loverBtn.innerHTML = "🎵 Play Lover";
-      loverBtn.classList.remove("playing");
-    }
-  });
-
-  // Duniyaa shuru hole Lover auto pause hobe
-  duniyaaAudio.addEventListener('play', () => {
-    loverAudio.pause();
-    loverBtn.innerHTML = "🎵 Play Lover";
-    loverBtn.classList.remove("playing");
-  });
-</script>
   function enterChaos() {
     scrollToId('intro');
 
-    if (loverAudio.paused) {
-      duniyaaAudio.pause();
-      duniyaaBtn.innerHTML = "🎵 Play Duniyaa";
-      duniyaaBtn.classList.remove("playing");
+    duniyaaAudio.pause();
+    duniyaaBtn.innerHTML = "🎵 Play Duniyaa";
+    duniyaaBtn.classList.remove("playing");
 
-      loverAudio.play().then(() => {
-        loverBtn.innerHTML = "⏸️ Pause Lover";
-        loverBtn.classList.add("playing");
-      }).catch(() => {});
-    }
+    loverAudio.play().catch(err => {
+      console.log("Lover play hoy nai:", err);
+    });
   }
+
+  // Duniyaa shuru hole Lover pause hobe
+  duniyaaAudio.addEventListener('play', () => {
+    loverAudio.pause();
+  });
+</script>
+
 <!-- ==================== LOVER SONG END ==================== -->
  <!-- ==================== LOVE COUNTER CODE START ==================== -->
 
